@@ -421,6 +421,7 @@ export default function LandingPage() {
             {[
               { href: "#missions", label: "Missions" },
               { href: "#pourquoi", label: "Pourquoi" },
+              { href: "#temoignages", label: "Témoignages" },
               { href: "#rdv", label: "Prendre RDV" },
               { href: "#contact", label: "Contact" }
             ].map((item) => (
@@ -668,6 +669,80 @@ export default function LandingPage() {
         </div>
       </Section>
 
+      {/* --- Social Proof --- */}
+      <Section id="temoignages" kicker="Ils témoignent" title="Ce que disent mes clients">
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Témoignage 1 */}
+          <div className="group relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-8 shadow-2xl flex flex-col justify-between">
+              <div>
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-slate-300 leading-relaxed italic text-base">
+                  « Travailler avec Laurent a vraiment marqué un tournant pour moi. Dès nos premiers échanges, il a su cerner mes besoins et m'apporter une vraie clarté sur mes tarifs, mon positionnement et mes objectifs financiers. Son accompagnement, à la fois structuré et très adapté à ma situation, m'a permis de gagner en confiance et de savoir comment attirer mes premiers clients tout en valorisant mon travail.
+                  <br /><br />
+                  Au-delà de son expertise, c'est quelqu'un de très agréable et sympathique : chaque séance est motivante et rassurante. On repart toujours avec des idées concrètes, un plan clair et surtout l'envie d'agir. Je recommande sincèrement son accompagnement à tous ceux qui veulent développer leur activité avec sérénité et efficacité. »
+                </blockquote>
+              </div>
+              <div className="mt-6 flex items-center gap-4 border-t border-slate-700/50 pt-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/40 to-blue-600/40 flex items-center justify-center border border-purple-500/30">
+                  <User className="h-6 w-6 text-purple-300" />
+                </div>
+                <div>
+                  <p className="font-semibold text-white">Soisick DE CANECAUDE</p>
+                  <p className="text-sm text-purple-300">Studio SoaZ · Architecte d'intérieur</p>
+                  <a
+                    href="https://www.studiosoaz.fr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-slate-400 hover:text-purple-300 transition-colors hover:underline"
+                  >
+                    www.studiosoaz.fr
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Témoignage 2 */}
+          <div className="group relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-8 shadow-2xl flex flex-col justify-between">
+              <div>
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-slate-300 leading-relaxed italic text-base">
+                  « L'accompagnement de Laurent est un vrai atout pour notre coopérative. Avec optimisme et clairvoyance, il nous aide à prendre du recul, à mieux organiser nos actions et à avancer plus sereinement. De plus, son écoute et ses mises en relation avec d'autres partenaires enrichissent notre démarche et ouvrent de nouvelles perspectives pour l'avenir. »
+                </blockquote>
+              </div>
+              <div className="mt-6 flex items-center gap-4 border-t border-slate-700/50 pt-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/40 to-blue-600/40 flex items-center justify-center border border-purple-500/30">
+                  <User className="h-6 w-6 text-purple-300" />
+                </div>
+                <div>
+                  <p className="font-semibold text-white">Julie</p>
+                  <p className="text-sm text-purple-300">Directrice de coopérative · Marseille</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+            <CalendarClock className="h-4 w-4" />
+            Rejoignez-les — Réservez votre appel gratuit
+          </ShimmerButton>
+        </div>
+      </Section>
+
       {/* --- FAQ --- */}
       <Section id="faq" kicker="Questions fréquentes" title="Tout ce que vous voulez savoir">
         <Accordion items={faq} />
@@ -771,71 +846,93 @@ export default function LandingPage() {
               </ul>
             </Card>
             <Card>
-              <h3 className="text-lg font-semibold text-white">Témoignages clients</h3>
-              <div className="mt-4 space-y-6">
-                <div className="border-l-4 border-purple-500/30 pl-4">
-                  <blockquote className="text-slate-300 italic leading-relaxed">
-                    « Travailler avec Laurent a vraiment marqué un tournant pour moi. Dès nos premiers échanges, il a su cerner mes besoins et m'apporter une vraie clarté sur mes tarifs, mon positionnement et mes objectifs financiers. Son accompagnement, à la fois structuré et très adapté à ma situation, m'a permis de gagner en confiance et de savoir comment attirer mes premiers clients tout en valorisant mon travail.
-                    <br /><br />
-                    Au-delà de son expertise, c'est quelqu'un de très agréable et sympathique : chaque séance est motivante et rassurante. On repart toujours avec des idées concrètes, un plan clair et surtout l'envie d'agir. Je recommande sincèrement son accompagnement à tous ceux qui veulent développer leur activité avec sérénité et efficacité. »
-                  </blockquote>
-                  <div className="mt-3 text-sm text-purple-300 font-medium">
-                    <div className="font-semibold">Soisick DE CANECAUDE</div>
-                    <div>Studio SoaZ - Architecte d'intérieur</div>
-                  </div>
-                </div>
-                
-                <div className="border-l-4 border-purple-500/30 pl-4">
-                  <blockquote className="text-slate-300 italic leading-relaxed">
-                    « L'accompagnement de Laurent est un vrai atout pour notre coopérative. Avec optimisme et clairvoyance, il nous aide à prendre du recul, à mieux organiser nos actions et à avancer plus sereinement. De plus, son écoute et ses mises en relation avec d'autres partenaires enrichissent notre démarche et ouvrent de nouvelles perspectives pour l'avenir. »
-                  </blockquote>
-                  <div className="mt-3 text-sm text-purple-300 font-medium">
-                    <div className="font-semibold">Julie</div>
-                    <div>Directrice - Marseille</div>
-                  </div>
-                </div>
+              <h3 className="text-lg font-semibold text-white">Ils me font confiance</h3>
+              <p className="mt-3 text-slate-300 leading-relaxed">
+                Architectes d'intérieur, dirigeants de coopératives, TPE/PME… Retrouvez l'ensemble des témoignages dans la{" "}
+                <a href="#temoignages" className="text-purple-300 hover:underline">section témoignages</a>.
+              </p>
+              <div className="mt-4 flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                ))}
+                <span className="ml-2 text-sm text-slate-400">Satisfaction client</span>
               </div>
             </Card>
           </div>
         </div>
       </Section>
 
-      {/* --- Conseils / Blog (teaser) --- */}
-      <Section id="conseils" kicker="Conseils" title="Articles pédagogiques de Laurent">
+      {/* --- Conseils / LinkedIn --- */}
+      <Section id="conseils" kicker="LinkedIn" title="Publications de Laurent">
         <div className="grid gap-6 md:grid-cols-3">
           {[
             {
-              title: "Le BFR expliqué : la voiture, l'essence et la trésorerie",
-              description: "Imagine que ton entreprise est une voiture. Le BFR, c'est l'essence qui te permet d'atteindre ta destination sans tomber en panne. Une explication simple et imagée d'un concept essentiel.",
-              url: "https://www.linkedin.com/pulse/le-bfr-expliqu%C3%A9-la-voiture-lessence-et-tr%C3%A9sorerie-laurent-garnero-rupqf/"
+              emoji: "🚗",
+              title: "La voiture, l'essence et la trésorerie",
+              excerpt: "Le BFR expliqué avec une métaphore simple : pourquoi même avec de bonnes ventes, votre trésorerie peut tomber en panne.",
+              url: "https://www.linkedin.com/pulse/le-bfr-expliqu%C3%A9-la-voiture-lessence-et-tr%C3%A9sorerie-laurent-garnero-rupqf/",
+              tag: "Trésorerie & BFR",
             },
             {
+              emoji: "🁢",
               title: "L'effet domino d'un retard de paiement",
-              description: "Un simple retard de paiement peut paraître anodin, mais dans une petite entreprise, c'est souvent l'effet domino : trésorerie tendue, relations dégradées, stress permanent...",
-              url: "https://www.linkedin.com/posts/laurent-garnero-13016_gestion-pme-cashflow-activity-7376133292020019200-8faT"
+              excerpt: "Un simple retard peut déclencher une cascade : trésorerie tendue, relations dégradées, stress permanent.",
+              url: "https://www.linkedin.com/posts/laurent-garnero-13016_gestion-pme-cashflow-activity-7376133292020019200-8faT",
+              tag: "Gestion PME",
             },
             {
+              emoji: "📊",
               title: "5 chiffres qui peuvent sauver votre entreprise",
-              description: "Découvrez les indicateurs clés à surveiller pour anticiper les difficultés et prendre les bonnes décisions au bon moment. Des chiffres simples mais essentiels.",
-              url: "https://www.linkedin.com/posts/laurent-garnero-13016_5-chiffres-qui-peuvent-sauver-votre-entreprise-activity-7368538257451675648-eHcx"
-            }
-          ].map(
-            (article, idx) => (
-              <Card key={idx} className="flex flex-col justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold text-white">{article.title}</h3>
-                  <p className="mt-2 text-slate-300">
-                    {article.description}
-                  </p>
+              excerpt: "Les indicateurs clés à surveiller pour anticiper les difficultés et décider au bon moment.",
+              url: "https://www.linkedin.com/posts/laurent-garnero-13016_5-chiffres-qui-peuvent-sauver-votre-entreprise-activity-7368538257451675648-eHcx",
+              tag: "Pilotage",
+            },
+          ].map((article, idx) => (
+            <a
+              key={idx}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 group-hover:border-purple-500/40 transition-all duration-300">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-3xl">{article.emoji}</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+                    <svg className="h-3 w-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    {article.tag}
+                  </span>
                 </div>
-                <a href={article.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-purple-300 hover:underline">
-                  Lire sur LinkedIn <ArrowRight className="h-4 w-4" />
-                </a>
-              </Card>
-            )
-          )}
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors duration-300 leading-snug">
+                    {article.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">{article.excerpt}</p>
+                </div>
+                <div className="flex items-center gap-2 text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+                  Lire sur LinkedIn
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 duration-300" />
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
-        <p className="mt-4 text-sm text-slate-400">Articles publiés sur LinkedIn par Laurent Garnero, expert en gestion d'entreprise à Marseille.</p>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/laurent-garnero-13016"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/10 px-5 py-3 text-sm font-medium text-blue-300 hover:bg-blue-500/20 transition-colors"
+          >
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            Voir toutes les publications
+          </a>
+        </div>
       </Section>
 
       {/* --- Footer / Mentions --- */}
