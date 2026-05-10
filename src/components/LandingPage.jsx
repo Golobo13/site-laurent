@@ -24,7 +24,7 @@ const SITE = {
   city: "Marseille",
   calendlyUrl: "https://app.lemcal.com/@lg-conseil",
   phone: "+33 6 22 45 92 38",
-  email: "laurentgarnero13@aol.com",
+  email: "l.garnero@expertgcl.fr",
   addressHtml: "Marseille",
 };
 
