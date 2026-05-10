@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   CalendarClock,
   Check,
@@ -11,7 +11,6 @@ import {
   Scale,
   ChevronDown,
   ArrowRight,
-  X,
   User,
   Sparkles,
   Zap,
@@ -23,7 +22,7 @@ import {
 const SITE = {
   brand: "GCL – Expert en gestion",
   city: "Marseille",
-  calendlyUrl: "https://calendly.com/votre-identifiant/appel-decouverte", // ← à remplacer
+  calendlyUrl: "https://app.lemcal.com/@lg-conseil",
   phone: "+33 6 22 45 92 38",
   email: "laurentgarnero13@aol.com",
   addressHtml: "Marseille",
@@ -258,67 +257,47 @@ const CookieBar = () => {
   );
 };
 
-const LeadMagnet = () => {
-  const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-  return (
-    <>
-      <button
-        className="inline-flex items-center gap-2 rounded-xl border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-purple-200 hover:bg-purple-500/20"
-        onClick={() => setOpen(true)}
-      >
-        <FileText className="h-4 w-4" /> Télécharger la check‑list gratuite
-      </button>
-      {open && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/70 p-4">
-          <Card className="max-w-md">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white">
-                Check‑list : 20 points de contrôle avant de créer sa société
-              </h3>
-              <button aria-label="Fermer" onClick={() => setOpen(false)}>
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <p className="mt-2 text-slate-300">
-              Recevez le PDF par email (double opt‑in RGPD).
-            </p>
-            {sent ? (
-              <p className="mt-4 rounded-xl border border-purple-700/40 bg-purple-700/10 p-3 text-purple-200">
-                Merci ! Vérifiez votre boîte mail pour confirmer votre inscription.
-              </p>
-            ) : (
-              <form
-                className="mt-4 space-y-3"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  // 👉 Ici, branchement à votre outil d'emailing (ex: Brevo/Sendinblue via API)
-                  setSent(true);
-                }}
-              >
-                <Input
-                  label="Votre email"
-                  type="email"
-                  required
-                  placeholder="vous@domaine.fr"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-4 py-3 font-medium text-white hover:bg-purple-500">
-                  Recevoir le PDF <ArrowRight className="h-4 w-4" />
-                </button>
-                <p className="text-xs text-slate-400">
-                  Vos données ne sont utilisées que pour vous envoyer ce contenu et, si vous le souhaitez, notre newsletter. Désinscription en un clic.
-                </p>
-              </form>
-            )}
-          </Card>
-        </div>
-      )}
-    </>
-  );
-};
+const RESOURCES = [
+  {
+    title: "20 points de contrôle avant de créer sa société",
+    description: "Le guide indispensable pour préparer votre projet et sécuriser le lancement.",
+    file: "/ressources/20-points-de-controle-avant-de-creer-sa-societe.pdf",
+    icon: FileText,
+    tag: "Création",
+  },
+  {
+    title: "Votre entreprise est-elle aussi rentable qu'elle devrait l'être ?",
+    description: "10 points de contrôle pour évaluer la rentabilité réelle de votre activité.",
+    file: "/ressources/votre-entreprise-est-elle-rentable.pdf",
+    icon: TrendingUp,
+    tag: "Pilotage",
+  },
+  {
+    title: "Entreprise en difficulté : les signaux à surveiller",
+    description: "10 points de vigilance pour agir avant qu'il ne soit trop tard.",
+    file: "/ressources/entreprise-en-difficulte.pdf",
+    icon: Shield,
+    tag: "Redressement",
+  },
+  {
+    title: "Êtes-vous prêt à vendre votre entreprise ?",
+    description: "10 points de contrôle avant de céder votre activité dans les meilleures conditions.",
+    file: "/ressources/cession-vente-entreprise.pdf",
+    icon: Scale,
+    tag: "Cession",
+  },
+];
+
+const LeadMagnet = () => (
+  <a
+    href={RESOURCES[0].file}
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-2 rounded-xl border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-purple-200 hover:bg-purple-500/20"
+  >
+    <FileText className="h-4 w-4" /> Télécharger la check‑list gratuite
+  </a>
+);
 
 const ServiceCard = ({ icon: Icon, title, bullets, delay = 0 }) => (
   <MagicCard className={`group hover:scale-105 transition-all duration-500 animate-fade-in-up`} style={{ animationDelay: `${delay}ms` }}>
@@ -373,18 +352,6 @@ export default function LandingPage() {
     []
   );
 
-  // Calendly embed (non bloquant). Si le script est refusé, on garde un fallback bouton.
-  const calendlyRef = useRef(null);
-  useEffect(() => {
-    const ok = localStorage.getItem("consent") === "given";
-    if (!ok) return; // on ne charge qu'avec consentement
-    const s = document.createElement("script");
-    s.src = "https://assets.calendly.com/assets/external/widget.js";
-    s.async = true;
-    document.body.appendChild(s);
-    return () => document.body.removeChild(s);
-  }, []);
-
   const onSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
@@ -421,6 +388,7 @@ export default function LandingPage() {
             {[
               { href: "#missions", label: "Missions" },
               { href: "#pourquoi", label: "Pourquoi" },
+              { href: "#ressources", label: "Ressources" },
               { href: "#temoignages", label: "Témoignages" },
               { href: "#rdv", label: "Prendre RDV" },
               { href: "#contact", label: "Contact" }
@@ -640,7 +608,49 @@ export default function LandingPage() {
         </div>
       </Section>
 
-      {/* --- Calendly --- */}
+      {/* --- Ressources --- */}
+      <Section id="ressources" kicker="Ressources gratuites" title="Téléchargez nos guides pratiques">
+        <p className="mb-8 max-w-3xl text-slate-300">
+          Quatre guides courts et opérationnels pour faire un premier état des lieux de votre projet ou de votre entreprise.
+          <span className="text-purple-300"> Sans inscription.</span>
+        </p>
+        <div className="grid gap-6 md:grid-cols-2">
+          {RESOURCES.map((r, idx) => (
+            <a
+              key={idx}
+              href={r.file}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative block"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-6 shadow-2xl flex gap-4 group-hover:border-purple-500/40 transition-all duration-300">
+                <div className="flex-shrink-0">
+                  <div className="rounded-xl bg-gradient-to-br from-purple-600/30 to-blue-600/30 p-3 text-purple-300 backdrop-blur-sm border border-purple-500/20">
+                    <r.icon className="h-6 w-6" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/40 bg-purple-500/10 px-2.5 py-0.5 text-xs font-medium text-purple-200">
+                    {r.tag}
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-white group-hover:text-purple-300 transition-colors leading-snug">
+                    {r.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">{r.description}</p>
+                  <div className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-purple-300 group-hover:text-purple-200">
+                    <FileText className="h-4 w-4" />
+                    Télécharger le PDF
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      {/* --- Réservation --- */}
       <Section id="rdv" kicker="Prendre rendez‑vous" title="Réservez un appel de découverte">
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
@@ -654,16 +664,16 @@ export default function LandingPage() {
               rel="noreferrer"
               className="mt-4 inline-flex items-center gap-2 rounded-xl bg-purple-600 px-5 py-3 font-medium text-white hover:bg-purple-500"
             >
-              <CalendarClock className="h-5 w-5" /> Ouvrir Calendly
+              <CalendarClock className="h-5 w-5" /> Ouvrir l'agenda
             </a>
-            <p className="mt-2 text-xs text-slate-500">Le widget s'affiche ci‑dessous si vous avez accepté les cookies.</p>
+            <p className="mt-2 text-xs text-slate-500">Réservation sécurisée via lemcal — confirmation immédiate par email.</p>
           </Card>
           <Card>
-            <div
-              ref={calendlyRef}
-              className="calendly-inline-widget min-h-[600px] w-full"
-              data-url={SITE.calendlyUrl}
-              aria-label="Calendly embed"
+            <iframe
+              src={SITE.calendlyUrl}
+              title="Réservation d'un rendez-vous"
+              className="w-full min-h-[600px] rounded-xl border-0 bg-white"
+              loading="lazy"
             />
           </Card>
         </div>
