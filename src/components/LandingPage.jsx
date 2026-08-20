@@ -20,7 +20,7 @@ import {
 
 // ⚙️ Remplace ces constantes par tes vraies infos
 const SITE = {
-  brand: "GCL – Expert en gestion",
+  brand: "GCL – Copilote d'entreprise",
   city: "Marseille",
   calendlyUrl: "https://app.lemcal.com/@lg-conseil",
   phone: "+33 6 22 45 92 38",
@@ -333,7 +333,7 @@ export default function LandingPage() {
   const faq = useMemo(
     () => [
       {
-        q: "Qu'est-ce qu'un expert en gestion d'entreprise à Marseille ?",
+        q: "Qu'est-ce qu'un copilote d'entreprise à Marseille ?",
         a: "Un partenaire opérationnel qui vous aide à structurer, piloter et sécuriser votre entreprise : vision, rentabilité, trésorerie, financements, et organisation au quotidien. Conseil gestion entreprise spécialisé TPE/PME.",
       },
       {
@@ -342,7 +342,7 @@ export default function LandingPage() {
       },
       {
         q: "Travaillez-vous avec mon expert-comptable à Marseille ?",
-        a: "Oui. L'expert en gestion complète le comptable : nous transformons les chiffres en décisions et en plan d'action pour votre redressement entreprise.",
+        a: "Oui. Le copilote d'entreprise complète le comptable : nous transformons les chiffres en décisions et en plan d'action pour votre redressement entreprise.",
       },
       {
         q: "Accompagnement dirigeant possible à distance ?",
@@ -423,13 +423,13 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-6">
                 <Badge variant="premium">
                   <Star className="h-3 w-3" />
-                  Expert en gestion · Marseille
+                  Copilote d'entreprise · Marseille
                 </Badge>
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                  Expert en gestion d'entreprise à 
+                  Copilote d'entreprise à
                 </span>
                 <span className="block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
                   Marseille
@@ -440,7 +440,7 @@ export default function LandingPage() {
               </h1>
               
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                <strong>Expert en gestion d'entreprise à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
+                <strong>Copilote d'entreprise à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -484,13 +484,13 @@ export default function LandingPage() {
                   <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
                     <img 
                       src="/_FCX1441.jpg" 
-                      alt="Laurent Garnero - Expert en gestion"
+                      alt="Laurent Garnero - Copilote d'entreprise"
                       className="w-full h-full object-cover object-top rounded-xl"
                     />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">Laurent</h3>
-                    <p className="text-sm text-purple-300">Expert en gestion</p>
+                    <p className="text-sm text-purple-300">Copilote d'entreprise</p>
                   </div>
                 </div>
                 
@@ -520,7 +520,7 @@ export default function LandingPage() {
       </section>
 
       {/* --- Services --- */}
-      <Section id="missions" kicker="Expert gestion Marseille" title="Accompagnement création entreprise & pilotage">
+      <Section id="missions" kicker="Copilote d'entreprise Marseille" title="Accompagnement création entreprise & pilotage">
         <div className="grid gap-8 md:grid-cols-3">
           <ServiceCard
             icon={FileText}
@@ -562,7 +562,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Pourquoi --- */}
-      <Section id="pourquoi" kicker="Pourquoi un expert en gestion ?" title="Un métier mal connu, une valeur très concrète">
+      <Section id="pourquoi" kicker="Pourquoi un copilote d'entreprise ?" title="Un métier mal connu, une valeur très concrète">
         <div className="grid items-start gap-6 md:grid-cols-2">
           <div className="space-y-4">
             <Card>
