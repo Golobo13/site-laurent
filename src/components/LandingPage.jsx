@@ -415,7 +415,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-purple-400/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative leading-tight">
                 <div className="text-3xl font-extrabold tracking-tight text-white">LG Conseil</div>
-                <div className="text-base font-bold tracking-wide text-[#e2583f]">Experts-Gestion</div>
+                <div className="text-base font-bold tracking-wide text-[#e2583f]">Experts en gestion</div>
               </div>
             </div>
           </a>
