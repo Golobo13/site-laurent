@@ -499,23 +499,23 @@ export default function LandingPage() {
                   des chiffres en décisions et des décisions en résultats.
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="success">
-                    <Building2 className="h-3 w-3" />
-                    Réseau GCL
-                  </Badge>
-                  <Badge variant="default">
-                    <Target className="h-3 w-3" />
-                    Conseiller en création d'entreprise
-                  </Badge>
-                </div>
-
-                <div className="mt-4 flex items-center gap-2">
-                  <img
-                    src="/bpifrance-creation-logo.jpg"
-                    alt="Bpifrance Création"
-                    className="h-10 w-10 rounded-full object-cover border border-slate-600/50"
-                  />
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center gap-2.5 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
+                    <img
+                      src="/gcl-logo.png"
+                      alt="GCL, les experts du Conseil"
+                      className="h-10 w-10 rounded-full object-cover flex-shrink-0"
+                    />
+                    <span className="text-xs font-medium text-green-200">Réseau GCL</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2.5 rounded-full border border-purple-500/40 bg-gradient-to-r from-purple-500/20 to-blue-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
+                    <img
+                      src="/bpifrance-creation-logo.jpg"
+                      alt="Bpifrance Création"
+                      className="h-10 w-10 rounded-full object-cover flex-shrink-0"
+                    />
+                    <span className="text-xs font-medium text-purple-200">Conseiller en création d'entreprise</span>
+                  </span>
                 </div>
               </MagicCard>
 
