@@ -516,13 +516,20 @@ export default function LandingPage() {
             <div className="relative space-y-4 md:ml-auto max-w-xl">
               <MagicCard>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLightboxImage({ src: "/_FCX1441.jpg", alt: "Laurent Garnero - Expert en gestion" })
+                    }
+                    className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    aria-label="Agrandir la photo de Laurent"
+                  >
                     <img
                       src="/_FCX1441.jpg"
                       alt="Laurent Garnero - Expert en gestion"
-                      className="w-full h-full object-cover object-top rounded-xl"
+                      className="w-full h-full object-cover object-top rounded-xl cursor-pointer hover:opacity-80 transition-opacity"
                     />
-                  </div>
+                  </button>
                   <div>
                     <h3 className="text-xl font-bold text-white">Laurent</h3>
                     <p className="text-sm text-purple-300">Expert en gestion</p>
@@ -576,13 +583,23 @@ export default function LandingPage() {
 
               <MagicCard>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLightboxImage({
+                        src: "/georges-louis-bonnifay.jpg",
+                        alt: "Georges-Louis Bonnifay - Copilote des chefs d'entreprise",
+                      })
+                    }
+                    className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    aria-label="Agrandir la photo de Georges-Louis"
+                  >
                     <img
                       src="/georges-louis-bonnifay.jpg"
                       alt="Georges-Louis Bonnifay - Copilote des chefs d'entreprise"
-                      className="w-full h-full object-cover object-top rounded-xl"
+                      className="w-full h-full object-cover object-top rounded-xl cursor-pointer hover:opacity-80 transition-opacity"
                     />
-                  </div>
+                  </button>
                   <div>
                     <h3 className="text-xl font-bold text-white">Georges-Louis</h3>
                     <p className="text-sm text-purple-300">Copilote des chefs d'entreprise</p>
