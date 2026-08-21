@@ -514,7 +514,7 @@ export default function LandingPage() {
             </div>
             
             <div className="relative space-y-4 md:ml-auto max-w-xl">
-              <MagicCard>
+              <MagicCard className="min-h-[292px]">
                 <div className="flex items-center gap-3 mb-4">
                   <button
                     type="button"
@@ -531,7 +531,7 @@ export default function LandingPage() {
                     />
                   </button>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Laurent</h3>
+                    <h3 className="text-xl font-bold text-white">Laurent Garnero</h3>
                     <p className="text-sm text-purple-300">Expert en gestion</p>
                   </div>
                 </div>
@@ -541,7 +541,7 @@ export default function LandingPage() {
                   des chiffres en décisions et des décisions en résultats.
                 </p>
 
-                <div className="flex flex-nowrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1 pl-1 pr-3 backdrop-blur-sm">
                     <button
                       type="button"
@@ -578,10 +578,25 @@ export default function LandingPage() {
                       Conseiller en création d'entreprise
                     </span>
                   </span>
+                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI" })}
+                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400"
+                      aria-label="Agrandir le logo BNI"
+                    >
+                      <img
+                        src="/bni-logo.jpg"
+                        alt="BNI"
+                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
+                      />
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI</span>
+                  </span>
                 </div>
               </MagicCard>
 
-              <MagicCard>
+              <MagicCard className="min-h-[292px]">
                 <div className="flex items-center gap-3 mb-4">
                   <button
                     type="button"
@@ -601,15 +616,33 @@ export default function LandingPage() {
                     />
                   </button>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Georges-Louis</h3>
+                    <h3 className="text-xl font-bold text-white">Georges-Louis Bonnifay</h3>
                     <p className="text-sm text-purple-300">Copilote des chefs d'entreprise</p>
                   </div>
                 </div>
 
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-300 leading-relaxed mb-4">
                   40 ans d'expérience entrepreneuriale. Mon rôle : vous accompagner sur la trésorerie, la rentabilité,
                   le développement, ainsi que la cession et la reprise d'entreprise.
                 </p>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI" })}
+                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400"
+                      aria-label="Agrandir le logo BNI"
+                    >
+                      <img
+                        src="/bni-logo.jpg"
+                        alt="BNI"
+                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
+                      />
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI</span>
+                  </span>
+                </div>
               </MagicCard>
             </div>
           </div>
