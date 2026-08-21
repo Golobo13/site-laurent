@@ -509,6 +509,14 @@ export default function LandingPage() {
                     Conseiller en création d'entreprise
                   </Badge>
                 </div>
+
+                <div className="mt-4 flex items-center gap-2">
+                  <img
+                    src="/bpifrance-creation-logo.jpg"
+                    alt="Bpifrance Création"
+                    className="h-10 w-10 rounded-full object-cover border border-slate-600/50"
+                  />
+                </div>
               </MagicCard>
 
               <MagicCard>
