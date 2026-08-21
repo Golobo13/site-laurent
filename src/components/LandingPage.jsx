@@ -333,7 +333,7 @@ export default function LandingPage() {
   const faq = useMemo(
     () => [
       {
-        q: "Qu'est-ce qu'un expert en gestion d'entreprise à Marseille ?",
+        q: "Qu'est-ce qu'un expert en gestion d'entreprises à Marseille ?",
         a: "Un partenaire opérationnel qui vous aide à structurer, piloter et sécuriser votre entreprise : vision, rentabilité, trésorerie, financements, et organisation au quotidien. Conseil gestion entreprise spécialisé TPE/PME.",
       },
       {
@@ -429,7 +429,7 @@ export default function LandingPage() {
               
               <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                  Expert en gestion d'entreprise à 
+                  Expert en gestion d'entreprises à
                 </span>
                 <span className="block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
                   Marseille
@@ -440,7 +440,7 @@ export default function LandingPage() {
               </h1>
               
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                <strong>Expert en gestion d'entreprise à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
+                <strong>Expert en gestion d'entreprises à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-8">
