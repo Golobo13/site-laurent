@@ -410,17 +410,14 @@ export default function LandingPage() {
       {/* --- Top bar --- */}
       <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
-          <a href="#accueil" className="group flex flex-shrink-0 items-center gap-2">
-            <div className="relative">
-              <div className="absolute inset-0 bg-purple-400/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative leading-tight">
-                <div className="whitespace-nowrap text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
-                <div className="whitespace-nowrap text-[32px] font-bold tracking-wide text-[#e2583f]">
-                  Experts en gestion
-                </div>
+          <div className="flex flex-shrink-0 items-center gap-2">
+            <div className="relative leading-tight">
+              <div className="whitespace-nowrap text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
+              <div className="whitespace-nowrap text-[32px] font-bold tracking-wide text-[#e2583f]">
+                Experts en gestion
               </div>
             </div>
-          </a>
+          </div>
           <nav className="hidden items-center gap-5 lg:flex">
             {[
               { href: "#missions", label: "Missions" },
@@ -459,13 +456,6 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 relative">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6">
-                <Badge variant="premium">
-                  <Star className="h-3 w-3" />
-                  Expert en gestion · Marseille
-                </Badge>
-              </div>
-              
               <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                   Expert en gestion d'entreprise à
