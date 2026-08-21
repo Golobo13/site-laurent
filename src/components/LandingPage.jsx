@@ -504,14 +504,6 @@ export default function LandingPage() {
                     <Building2 className="h-3 w-3" />
                     Réseau GCL
                   </Badge>
-                  <Badge variant="default">
-                    <TrendingUp className="h-3 w-3" />
-                    Culture du ROI
-                  </Badge>
-                  <Badge variant="premium">
-                    <Shield className="h-3 w-3" />
-                    Accompagnement humain
-                  </Badge>
                 </div>
               </MagicCard>
 
@@ -530,25 +522,10 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <p className="text-slate-300 leading-relaxed mb-4">
+                <p className="text-slate-300 leading-relaxed">
                   40 ans d'expérience entrepreneuriale. Mon rôle : vous accompagner sur la trésorerie, la rentabilité,
                   le développement, ainsi que la cession et la reprise d'entreprise.
                 </p>
-
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="success">
-                    <Building2 className="h-3 w-3" />
-                    Réseau GCL
-                  </Badge>
-                  <Badge variant="default">
-                    <TrendingUp className="h-3 w-3" />
-                    Culture du ROI
-                  </Badge>
-                  <Badge variant="premium">
-                    <Shield className="h-3 w-3" />
-                    Accompagnement humain
-                  </Badge>
-                </div>
               </MagicCard>
             </div>
           </div>
