@@ -409,17 +409,19 @@ export default function LandingPage() {
       
       {/* --- Top bar --- */}
       <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <a href="#accueil" className="group flex items-center gap-2">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
+          <a href="#accueil" className="group flex flex-shrink-0 items-center gap-2">
             <div className="relative">
               <div className="absolute inset-0 bg-purple-400/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative leading-tight">
-                <div className="text-3xl font-extrabold tracking-tight text-white">LG Conseil</div>
-                <div className="text-base font-bold tracking-wide text-[#e2583f]">Experts en gestion</div>
+                <div className="whitespace-nowrap text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
+                <div className="whitespace-nowrap text-[32px] font-bold tracking-wide text-[#e2583f]">
+                  Experts en gestion
+                </div>
               </div>
             </div>
           </a>
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-5 lg:flex">
             {[
               { href: "#missions", label: "Missions" },
               { href: "#pourquoi", label: "Pourquoi" },
@@ -428,9 +430,9 @@ export default function LandingPage() {
               { href: "#rdv", label: "Prendre RDV" },
               { href: "#contact", label: "Contact" }
             ].map((item) => (
-              <a 
+              <a
                 key={item.href}
-                className="relative group text-slate-300 hover:text-white transition-colors duration-300 font-medium" 
+                className="relative group whitespace-nowrap text-slate-300 hover:text-white transition-colors duration-300 font-medium"
                 href={item.href}
               >
                 <span className="relative z-10">{item.label}</span>
@@ -438,13 +440,15 @@ export default function LandingPage() {
               </a>
             ))}
           </nav>
-          <ShimmerButton 
-            onClick={() => window.open(SITE.calendlyUrl, '_blank')}
-            className="hidden md:inline-flex"
-          >
-            <CalendarClock className="h-4 w-4" />
-            Prendre RDV
-          </ShimmerButton>
+          <div className="hidden flex-shrink-0 lg:block">
+            <ShimmerButton
+              onClick={() => window.open(SITE.calendlyUrl, '_blank')}
+              className="whitespace-nowrap"
+            >
+              <CalendarClock className="h-4 w-4" />
+              Prendre RDV
+            </ShimmerButton>
+          </div>
         </div>
       </header>
 
