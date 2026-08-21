@@ -333,7 +333,7 @@ export default function LandingPage() {
   const faq = useMemo(
     () => [
       {
-        q: "Qu'est-ce qu'un expert en gestion d'entreprises à Marseille ?",
+        q: "Qu'est-ce qu'un expert en gestion d'entreprise à Marseille ?",
         a: "Un partenaire opérationnel qui vous aide à structurer, piloter et sécuriser votre entreprise : vision, rentabilité, trésorerie, financements, et organisation au quotidien. Conseil gestion entreprise spécialisé TPE/PME.",
       },
       {
@@ -429,7 +429,7 @@ export default function LandingPage() {
               
               <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                  Expert en gestion d'entreprises à
+                  Expert en gestion d'entreprise à
                 </span>
                 <span className="block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
                   Marseille
@@ -440,7 +440,7 @@ export default function LandingPage() {
               </h1>
               
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                <strong>Expert en gestion d'entreprises à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
+                <strong>Expert en gestion d'entreprise à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -478,12 +478,12 @@ export default function LandingPage() {
               </div>
             </div>
             
-            <div className="relative">
-              <MagicCard className="md:ml-auto max-w-md">
+            <div className="relative space-y-4 md:ml-auto max-w-md">
+              <MagicCard>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
-                    <img 
-                      src="/_FCX1441.jpg" 
+                    <img
+                      src="/_FCX1441.jpg"
                       alt="Laurent Garnero - Expert en gestion"
                       className="w-full h-full object-cover object-top rounded-xl"
                     />
@@ -493,12 +493,48 @@ export default function LandingPage() {
                     <p className="text-sm text-purple-300">Expert en gestion</p>
                   </div>
                 </div>
-                
+
                 <p className="text-slate-300 leading-relaxed mb-4">
                   10+ ans d'expérience en pilotage d'entreprise (création, croissance, redressement). Mon rôle : transformer
                   des chiffres en décisions et des décisions en résultats.
                 </p>
-                
+
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="success">
+                    <Building2 className="h-3 w-3" />
+                    Réseau GCL
+                  </Badge>
+                  <Badge variant="default">
+                    <TrendingUp className="h-3 w-3" />
+                    Culture du ROI
+                  </Badge>
+                  <Badge variant="premium">
+                    <Shield className="h-3 w-3" />
+                    Accompagnement humain
+                  </Badge>
+                </div>
+              </MagicCard>
+
+              <MagicCard>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
+                    <img
+                      src="/georges-louis-bonnifay.jpg"
+                      alt="Georges-Louis Bonnifay - Copilote des chefs d'entreprise"
+                      className="w-full h-full object-cover object-top rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Georges-Louis</h3>
+                    <p className="text-sm text-purple-300">Copilote des chefs d'entreprise</p>
+                  </div>
+                </div>
+
+                <p className="text-slate-300 leading-relaxed mb-4">
+                  40 ans d'expérience entrepreneuriale. Mon rôle : vous accompagner sur la trésorerie, la rentabilité,
+                  le développement, ainsi que la cession et la reprise d'entreprise.
+                </p>
+
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="success">
                     <Building2 className="h-3 w-3" />
