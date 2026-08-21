@@ -413,8 +413,9 @@ export default function LandingPage() {
           <a href="#accueil" className="group flex items-center gap-2">
             <div className="relative">
               <div className="absolute inset-0 bg-purple-400/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent font-bold text-sm tracking-wide">
-                {SITE.brand} · {SITE.city}
+              <div className="relative leading-tight">
+                <div className="text-3xl font-extrabold tracking-tight text-white">LG Conseil</div>
+                <div className="text-base font-bold tracking-wide text-[#e2583f]">Experts-Gestion</div>
               </div>
             </div>
           </a>
