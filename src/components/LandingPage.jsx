@@ -504,6 +504,10 @@ export default function LandingPage() {
                     <Building2 className="h-3 w-3" />
                     Réseau GCL
                   </Badge>
+                  <Badge variant="default">
+                    <Target className="h-3 w-3" />
+                    Conseiller en création d'entreprise
+                  </Badge>
                 </div>
               </MagicCard>
 
