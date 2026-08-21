@@ -354,7 +354,6 @@ const LogoLightbox = ({ image, onClose }) => {
         <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl">
           <img src={image.src} alt={image.alt} className="h-auto w-full object-contain" />
         </div>
-        <p className="mt-3 text-center text-sm text-slate-300">{image.alt}</p>
       </div>
     </div>
   );
@@ -514,7 +513,7 @@ export default function LandingPage() {
             </div>
             
             <div className="relative space-y-4 md:ml-auto max-w-xl">
-              <MagicCard className="min-h-[292px]">
+              <MagicCard className="min-h-[316px]">
                 <div className="flex items-center gap-3 mb-4">
                   <button
                     type="button"
@@ -542,6 +541,21 @@ export default function LandingPage() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI Marseille" })}
+                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400"
+                      aria-label="Agrandir le logo BNI"
+                    >
+                      <img
+                        src="/bni-logo.jpg"
+                        alt="BNI Marseille"
+                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
+                      />
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI Marseille</span>
+                  </span>
                   <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1 pl-1 pr-3 backdrop-blur-sm">
                     <button
                       type="button"
@@ -578,25 +592,10 @@ export default function LandingPage() {
                       Conseiller en création d'entreprise
                     </span>
                   </span>
-                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm">
-                    <button
-                      type="button"
-                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI" })}
-                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400"
-                      aria-label="Agrandir le logo BNI"
-                    >
-                      <img
-                        src="/bni-logo.jpg"
-                        alt="BNI"
-                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
-                      />
-                    </button>
-                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI</span>
-                  </span>
                 </div>
               </MagicCard>
 
-              <MagicCard className="min-h-[292px]">
+              <MagicCard className="min-h-[316px]">
                 <div className="flex items-center gap-3 mb-4">
                   <button
                     type="button"
@@ -630,17 +629,17 @@ export default function LandingPage() {
                   <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm">
                     <button
                       type="button"
-                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI" })}
+                      onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI Marseille" })}
                       className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400"
                       aria-label="Agrandir le logo BNI"
                     >
                       <img
                         src="/bni-logo.jpg"
-                        alt="BNI"
+                        alt="BNI Marseille"
                         className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
                       />
                     </button>
-                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI</span>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI Marseille</span>
                   </span>
                 </div>
               </MagicCard>
