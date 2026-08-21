@@ -16,6 +16,7 @@ import {
   Zap,
   Target,
   Star,
+  X,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -326,9 +327,43 @@ const ServiceCard = ({ icon: Icon, title, bullets, delay = 0 }) => (
   </MagicCard>
 );
 
+const LogoLightbox = ({ image, onClose }) => {
+  useEffect(() => {
+    if (!image) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [image, onClose]);
+
+  if (!image) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-6"
+      onClick={onClose}
+    >
+      <div className="relative w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="absolute -top-4 -right-4 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl">
+          <img src={image.src} alt={image.alt} className="h-auto w-full object-contain" />
+        </div>
+        <p className="mt-3 text-center text-sm text-slate-300">{image.alt}</p>
+      </div>
+    </div>
+  );
+};
+
 export default function LandingPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", sector: "", message: "", consent: false });
   const [status, setStatus] = useState("idle");
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const faq = useMemo(
     () => [
@@ -478,7 +513,7 @@ export default function LandingPage() {
               </div>
             </div>
             
-            <div className="relative space-y-4 md:ml-auto max-w-md">
+            <div className="relative space-y-4 md:ml-auto max-w-xl">
               <MagicCard>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-800/50 flex items-center justify-center border border-slate-600/50">
@@ -499,22 +534,42 @@ export default function LandingPage() {
                   des chiffres en décisions et des décisions en résultats.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex items-center gap-2.5 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
-                    <img
-                      src="/gcl-logo.png"
-                      alt="GCL, les experts du Conseil"
-                      className="h-10 w-10 rounded-full object-cover flex-shrink-0"
-                    />
-                    <span className="text-xs font-medium text-green-200">Réseau GCL</span>
+                <div className="flex flex-nowrap items-center gap-2">
+                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1 pl-1 pr-3 backdrop-blur-sm">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightboxImage({ src: "/gcl-logo.png", alt: "GCL, les experts du Conseil" })
+                      }
+                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400"
+                      aria-label="Agrandir le logo GCL"
+                    >
+                      <img
+                        src="/gcl-logo.png"
+                        alt="GCL, les experts du Conseil"
+                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
+                      />
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-green-200">Réseau GCL</span>
                   </span>
-                  <span className="inline-flex items-center gap-2.5 rounded-full border border-purple-500/40 bg-gradient-to-r from-purple-500/20 to-blue-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
-                    <img
-                      src="/bpifrance-creation-logo.jpg"
-                      alt="Bpifrance Création"
-                      className="h-10 w-10 rounded-full object-cover flex-shrink-0"
-                    />
-                    <span className="text-xs font-medium text-purple-200">Conseiller en création d'entreprise</span>
+                  <span className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-purple-500/40 bg-gradient-to-r from-purple-500/20 to-blue-500/20 py-1 pl-1 pr-3 backdrop-blur-sm">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightboxImage({ src: "/bpifrance-creation-logo.jpg", alt: "Bpifrance Création" })
+                      }
+                      className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      aria-label="Agrandir le logo Bpifrance Création"
+                    >
+                      <img
+                        src="/bpifrance-creation-logo.jpg"
+                        alt="Bpifrance Création"
+                        className="h-8 w-8 cursor-pointer rounded-full object-cover transition-opacity hover:opacity-80"
+                      />
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] font-medium text-purple-200">
+                      Conseiller en création d'entreprise
+                    </span>
                   </span>
                 </div>
               </MagicCard>
@@ -988,6 +1043,8 @@ export default function LandingPage() {
       </footer>
 
       <CookieBar />
+
+      <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
 
       {/* --- JSON‑LD minimal pour le SEO local --- */}
       <script
