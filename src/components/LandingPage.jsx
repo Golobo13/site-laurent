@@ -505,6 +505,15 @@ export default function LandingPage() {
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
           <div className="grid min-w-0 items-center gap-12 md:grid-cols-2">
             <div className="relative z-10 min-w-0">
+              <p className="break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+                <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                  Experts en gestion d'entreprise à Marseille
+                </span>
+                <span className="block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
+                  Accompagnement reprise, création, cession & pilotage
+                </span>
+              </p>
+
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
                 <strong>Expert en gestion d'entreprise à Marseille</strong>, j'accompagne les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
               </p>
