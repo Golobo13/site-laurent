@@ -112,7 +112,7 @@ const MagicCard = ({ children, className = "" }) => (
 
 const Section = ({ id, title, kicker, children }) => (
   <section id={id} className="scroll-mt-24 py-16 md:py-24 relative">
-    <div className="mx-auto max-w-6xl px-4">
+    <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10">
       {kicker && (
         <div className="mb-4 flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-purple-400" />
@@ -427,7 +427,7 @@ export default function LandingPage() {
       
       {/* --- Top bar --- */}
       <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
+        <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
           <div className="flex flex-shrink-0 items-center gap-2">
             <div className="relative leading-tight">
               <div className="whitespace-nowrap text-[26px] sm:text-[34px] lg:text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
@@ -470,7 +470,7 @@ export default function LandingPage() {
 
         {mobileMenuOpen && (
           <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl lg:hidden">
-            <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
+            <nav className="mx-auto flex max-w-[1800px] flex-col gap-1 px-4 py-4 sm:px-6 lg:px-10">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.href}
@@ -502,7 +502,7 @@ export default function LandingPage() {
       <section id="accueil" className="relative overflow-hidden py-20 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         
-        <div className="mx-auto max-w-6xl px-4 relative">
+        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
           <div className="grid min-w-0 items-center gap-12 md:grid-cols-2">
             <div className="relative z-10 min-w-0">
               <h1 className="break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
@@ -1110,7 +1110,7 @@ export default function LandingPage() {
 
       {/* --- Footer / Mentions --- */}
       <footer id="mentions" className="border-t border-slate-800/60 py-12">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10">
           <div className="grid gap-8 md:grid-cols-2">
             <div>
               <p className="text-sm text-slate-400">
