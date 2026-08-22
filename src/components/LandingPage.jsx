@@ -17,6 +17,7 @@ import {
   Target,
   Star,
   X,
+  Menu,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -28,6 +29,15 @@ const SITE = {
   email: "l.garnero@expertgcl.fr",
   addressHtml: "Marseille",
 };
+
+const NAV_ITEMS = [
+  { href: "#missions", label: "Missions" },
+  { href: "#pourquoi", label: "Pourquoi" },
+  { href: "#ressources", label: "Ressources" },
+  { href: "#temoignages", label: "Témoignages" },
+  { href: "#rdv", label: "Prendre RDV" },
+  { href: "#contact", label: "Contact" },
+];
 
 // 🎨 Palette (sobre, rassurante)
 const COLORS = {
@@ -363,6 +373,14 @@ export default function LandingPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", sector: "", message: "", consent: false });
   const [status, setStatus] = useState("idle");
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMobileMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileMenuOpen]);
 
   const faq = useMemo(
     () => [
@@ -412,21 +430,14 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
           <div className="flex flex-shrink-0 items-center gap-2">
             <div className="relative leading-tight">
-              <div className="whitespace-nowrap text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
-              <div className="whitespace-nowrap text-[32px] font-bold tracking-wide text-[#e2583f]">
+              <div className="whitespace-nowrap text-[26px] sm:text-[34px] lg:text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
+              <div className="whitespace-nowrap text-[14px] sm:text-[18px] lg:text-[32px] font-bold tracking-wide text-[#e2583f]">
                 Experts en gestion
               </div>
             </div>
           </div>
           <nav className="hidden items-center gap-5 lg:flex">
-            {[
-              { href: "#missions", label: "Missions" },
-              { href: "#pourquoi", label: "Pourquoi" },
-              { href: "#ressources", label: "Ressources" },
-              { href: "#temoignages", label: "Témoignages" },
-              { href: "#rdv", label: "Prendre RDV" },
-              { href: "#contact", label: "Contact" }
-            ].map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 className="relative group whitespace-nowrap text-slate-300 hover:text-white transition-colors duration-300 font-medium"
@@ -446,7 +457,45 @@ export default function LandingPage() {
               Prendre RDV
             </ShimmerButton>
           </div>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileMenuOpen}
+            className="flex-shrink-0 rounded-lg border border-slate-700/60 bg-slate-900/60 p-2.5 text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors lg:hidden"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl lg:hidden">
+            <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-lg px-3 py-3 font-medium text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="pt-2">
+                <ShimmerButton
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.open(SITE.calendlyUrl, '_blank');
+                  }}
+                  className="w-full justify-center whitespace-nowrap"
+                >
+                  <CalendarClock className="h-4 w-4" />
+                  Prendre RDV
+                </ShimmerButton>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* --- Hero --- */}
@@ -454,9 +503,9 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         
         <div className="mx-auto max-w-6xl px-4 relative">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            <div className="relative z-10">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+          <div className="grid min-w-0 items-center gap-12 md:grid-cols-2">
+            <div className="relative z-10 min-w-0">
+              <h1 className="break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                   Expert en gestion d'entreprise à
                 </span>
@@ -507,7 +556,7 @@ export default function LandingPage() {
               </div>
             </div>
             
-            <div className="relative space-y-4 md:ml-auto max-w-xl">
+            <div className="relative min-w-0 space-y-4 md:ml-auto max-w-xl">
               <MagicCard className="min-h-[316px]">
                 <button
                   type="button"
