@@ -503,9 +503,9 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
-          <div className="grid min-w-0 items-center gap-12 md:grid-cols-2">
+          <div className="grid min-w-0 items-center gap-12 md:grid-cols-2 xl:grid-cols-[1fr_600px]">
             <div className="relative z-10 min-w-0">
-              <h1 className="break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+              <h1 className="break-words text-4xl sm:text-5xl md:text-6xl xl:text-[22px] 2xl:text-[32px] font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                   Experts en gestion d'entreprise à Marseille
                 </span>
