@@ -503,7 +503,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
-          <div className="grid min-w-0 items-center gap-12 md:grid-cols-2 xl:grid-cols-[1fr_600px]">
+          <div className="grid min-w-0 items-start gap-12 md:grid-cols-2 xl:grid-cols-[1fr_600px]">
             <div className="relative z-10 min-w-0">
               <style>{`
                 @media (min-width: 1280px) {
