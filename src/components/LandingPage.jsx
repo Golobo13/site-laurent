@@ -505,7 +505,14 @@ export default function LandingPage() {
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
           <div className="grid min-w-0 items-center gap-12 md:grid-cols-2 xl:grid-cols-[1fr_600px]">
             <div className="relative z-10 min-w-0">
-              <h1 className="break-words text-4xl sm:text-5xl md:text-6xl xl:text-[22px] 2xl:text-[32px] font-bold leading-tight tracking-tight mb-6">
+              <style>{`
+                @media (min-width: 1280px) {
+                  .hero-fluid-title {
+                    font-size: clamp(17px, 3.46vw - 27px, 35px);
+                  }
+                }
+              `}</style>
+              <h1 className="hero-fluid-title break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
                 <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                   Experts en gestion d'entreprise à Marseille
                 </span>
