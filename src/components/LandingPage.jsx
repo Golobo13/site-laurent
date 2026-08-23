@@ -507,16 +507,19 @@ export default function LandingPage() {
             <div className="relative z-10 min-w-0">
               <style>{`
                 @media (min-width: 1280px) {
-                  .hero-fluid-title {
+                  .hero-fluid-line1 {
+                    font-size: clamp(22px, 4.04vw - 30px, 43px);
+                  }
+                  .hero-fluid-line2 {
                     font-size: clamp(17px, 3.46vw - 27px, 35px);
                   }
                 }
               `}</style>
-              <h1 className="hero-fluid-title break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
-                <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              <h1 className="break-words text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+                <span className="hero-fluid-line1 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                   Experts en gestion d'entreprise à Marseille
                 </span>
-                <span className="block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
+                <span className="hero-fluid-line2 block bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent animate-pulse">
                   Accompagnement reprise, création, cession & pilotage
                 </span>
               </h1>
