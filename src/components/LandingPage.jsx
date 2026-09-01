@@ -502,7 +502,7 @@ export default function LandingPage() {
       </header>
 
       {/* --- Hero --- */}
-      <section id="accueil" className="relative overflow-hidden py-20 md:py-32">
+      <section id="accueil" className="relative overflow-hidden pt-[42px] pb-20 md:pt-[90px] md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
