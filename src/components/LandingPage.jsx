@@ -526,7 +526,7 @@ export default function LandingPage() {
               </h1>
 
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                <strong>Experts en gestions d'entreprise à Marseille</strong>, nous accompagnons les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité. <span className="text-purple-300 font-semibold">Conseil gestion entreprise</span> sans jargon.
+                <strong>Experts en gestions d'entreprise à Marseille</strong>, nous accompagnons les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-8">
