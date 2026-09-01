@@ -894,7 +894,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Social Proof --- */}
-      <Section id="temoignages" kicker="Ils témoignent" title="Ce que disent mes clients" showCta={false}>
+      <Section id="temoignages" kicker="Témoignages" title="Ce que disent mes clients" showCta={false}>
         <div className="grid gap-8 md:grid-cols-2">
           {/* Témoignage 1 */}
           <div className="group relative">
