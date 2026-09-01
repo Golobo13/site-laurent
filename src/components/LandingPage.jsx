@@ -52,7 +52,7 @@ const PUBLICATIONS = [
     tag: "Trésorerie & BFR",
   },
   {
-    emoji: "🁢",
+    icon: "domino",
     title: "L'effet domino d'un retard de paiement",
     excerpt: "Un simple retard peut déclencher une cascade : trésorerie tendue, relations dégradées, stress permanent.",
     url: "https://www.linkedin.com/posts/laurent-garnero-13016_gestion-pme-cashflow-activity-7376133292020019200-8faT",
@@ -147,6 +147,28 @@ const MagicCard = ({ children, className = "" }) => (
       {children}
     </div>
   </div>
+);
+
+// Icône "dominos en équilibre" dessinée à la main (les emojis domino Unicode
+// ne s'affichent pas correctement sur la plupart des systèmes)
+const DominoIcon = ({ className = "h-9 w-9" }) => (
+  <svg viewBox="0 0 40 32" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="10" width="7" height="20" rx="1.6" fill="#c4b5fd" stroke="#7c3aed" strokeWidth="1.2" />
+    <circle cx="5.5" cy="16" r="1" fill="#4c1d95" />
+    <circle cx="5.5" cy="24" r="1" fill="#4c1d95" />
+
+    <g transform="rotate(16 15.5 26)">
+      <rect x="12" y="6" width="7" height="20" rx="1.6" fill="#a5b4fc" stroke="#4f46e5" strokeWidth="1.2" />
+      <circle cx="15.5" cy="12" r="1" fill="#312e81" />
+      <circle cx="15.5" cy="20" r="1" fill="#312e81" />
+    </g>
+
+    <g transform="rotate(32 27.5 26)">
+      <rect x="24" y="4" width="7" height="20" rx="1.6" fill="#93c5fd" stroke="#2563eb" strokeWidth="1.2" />
+      <circle cx="27.5" cy="10" r="1" fill="#1e3a8a" />
+      <circle cx="27.5" cy="18" r="1" fill="#1e3a8a" />
+    </g>
+  </svg>
 );
 
 const Section = ({ id, title, kicker, children, showCta = true }) => (
@@ -1118,7 +1140,11 @@ export default function LandingPage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 group-hover:border-purple-500/40 transition-all duration-300">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="text-3xl">{article.emoji}</span>
+                  {article.icon === "domino" ? (
+                    <DominoIcon className="h-8 w-8" />
+                  ) : (
+                    <span className="text-3xl">{article.emoji}</span>
+                  )}
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
                     <svg className="h-3 w-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
