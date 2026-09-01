@@ -695,22 +695,12 @@ export default function LandingPage() {
       </section>
 
       {/* --- Services --- */}
-      <Section id="missions" kicker="Expert gestion Marseille" title="Accompagnement création entreprise & pilotage">
+      <Section id="missions" kicker="Les missions des experts en gestion d'entreprise" title="Pilotage & accompagnement création, reprise, cession et transmission">
         <div className="grid gap-8 md:grid-cols-3">
           <ServiceCard
-            icon={FileText}
-            title="Création d'entreprise"
-            delay={0}
-            bullets={[
-              "Business plan et prévisionnels crédibles",
-              "Choix de structure et cadrage juridique",
-              "Financements, aides et premiers indicateurs",
-            ]}
-          />
-          <ServiceCard
             icon={TrendingUp}
-            title="Pilotage & redressement"
-            delay={200}
+            title="Pilotage"
+            delay={0}
             bullets={[
               "Tableau de bord, marges et prix",
               "Trésorerie, BFR et plans d'action",
@@ -718,8 +708,18 @@ export default function LandingPage() {
             ]}
           />
           <ServiceCard
+            icon={FileText}
+            title="Création & reprise"
+            delay={200}
+            bullets={[
+              "Business plan et prévisionnels crédibles",
+              "Choix de structure et cadrage juridique",
+              "Financements, aides et premiers indicateurs",
+            ]}
+          />
+          <ServiceCard
             icon={Scale}
-            title="Transmission & valorisation"
+            title="Cession & Transmission"
             delay={400}
             bullets={[
               "Préparation à la vente et audit vendeur",
@@ -727,12 +727,6 @@ export default function LandingPage() {
               "Négociation et accompagnement jusqu'à la signature",
             ]}
           />
-        </div>
-        <div className="mt-8 text-center">
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            <strong>Conseil gestion entreprise Marseille</strong> : chaque mission est expliquée simplement avec exemples et schémas lors du diagnostic.
-            <span className="block mt-2 text-purple-300 font-medium">Premiers résultats visibles dès 30 jours.</span>
-          </p>
         </div>
       </Section>
 
