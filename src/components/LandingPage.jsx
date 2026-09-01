@@ -439,15 +439,14 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <nav className="hidden items-center gap-4 min-[1650px]:flex">
+          <nav className="hidden items-center gap-2.5 min-[1650px]:flex">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                className="relative group whitespace-nowrap text-slate-300 hover:text-white transition-colors duration-300 font-medium"
                 href={item.href}
+                className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
               >
-                <span className="relative z-10">{item.label}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -m-2"></div>
+                {item.label}
               </a>
             ))}
           </nav>
@@ -473,13 +472,13 @@ export default function LandingPage() {
 
         {mobileMenuOpen && (
           <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl min-[1650px]:hidden">
-            <nav className="mx-auto flex max-w-[1800px] flex-col gap-1 px-4 py-4 sm:px-6 lg:px-10">
+            <nav className="mx-auto flex max-w-[1800px] flex-wrap gap-2 px-4 py-4 sm:px-6 lg:px-10">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-lg px-3 py-3 font-medium text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
+                  className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
                 >
                   {item.label}
                 </a>
