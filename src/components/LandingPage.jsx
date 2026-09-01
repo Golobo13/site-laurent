@@ -448,7 +448,7 @@ export default function LandingPage() {
       
       {/* --- Top bar --- */}
       <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
+        <div className="mx-auto flex max-w-[1800px] flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
           <div className="flex flex-shrink-0 items-center gap-2">
             <div className="relative leading-tight">
               <div className="whitespace-nowrap text-[26px] sm:text-[34px] lg:text-[60px] font-extrabold tracking-tight text-white">LG Conseil</div>
@@ -457,7 +457,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <nav className="hidden items-center gap-2.5 min-[1650px]:flex">
+          <nav className="hidden flex-wrap items-center justify-end gap-2.5 min-[1024px]:flex">
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -481,14 +481,14 @@ export default function LandingPage() {
             onClick={() => setMobileMenuOpen((v) => !v)}
             aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={mobileMenuOpen}
-            className="flex-shrink-0 rounded-lg border border-slate-700/60 bg-slate-900/60 p-2.5 text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors min-[1650px]:hidden"
+            className="flex-shrink-0 rounded-lg border border-slate-700/60 bg-slate-900/60 p-2.5 text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors min-[1024px]:hidden"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl min-[1650px]:hidden">
+          <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl min-[1024px]:hidden">
             <nav className="mx-auto flex max-w-[1800px] flex-wrap gap-2 px-4 py-4 sm:px-6 lg:px-10">
               <button
                 type="button"
