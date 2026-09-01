@@ -133,11 +133,19 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       )}
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
             Prenez rendez‑vous
           </ShimmerButton>
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+          >
+            <span>Discutons de vos besoins</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       )}
     </div>
@@ -538,23 +546,6 @@ export default function LandingPage() {
                 <strong>Experts en gestion d'entreprise à Marseille</strong>, nous accompagnons les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité.
               </p>
               
-              <div className="flex flex-wrap items-center gap-4 mb-8">
-                <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
-                  <CalendarClock className="h-5 w-5" />
-                  Prenez rendez‑vous
-                </ShimmerButton>
-                
-                <button 
-                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative inline-flex items-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 py-3 font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
-                >
-                  <span>Discutons de vos besoins</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
-                
-                <LeadMagnet />
-              </div>
-              
               <div className="grid gap-4 text-sm text-slate-300 md:grid-cols-2">
                 {[
                   { text: "Diagnostic gratuit et sans engagement", icon: Target },
@@ -570,6 +561,21 @@ export default function LandingPage() {
                     <span className="group-hover:text-slate-200 transition-colors">{item.text}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
+                <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+                  <CalendarClock className="h-5 w-5" />
+                  Prenez rendez‑vous
+                </ShimmerButton>
+
+                <button
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+                >
+                  <span>Discutons de vos besoins</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </div>
             
@@ -943,11 +949,19 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
             Prenez rendez‑vous
           </ShimmerButton>
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+          >
+            <span>Discutons de vos besoins</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </Section>
 
