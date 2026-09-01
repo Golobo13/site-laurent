@@ -1155,7 +1155,7 @@ export default function LandingPage() {
 
       {/* --- Contact (coordonnées) --- */}
       <Section id="coordonnees" kicker="Contact" title="Nos coordonnées">
-        <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-14 max-w-4xl mx-auto">
           <Card>
             <h3 className="text-lg font-semibold text-white">Laurent Garnero</h3>
             <ul className="mt-3 space-y-2 text-slate-300">
@@ -1178,6 +1178,7 @@ export default function LandingPage() {
           <Card>
             <h3 className="text-lg font-semibold text-white">Georges-Louis Bonnifay</h3>
             <ul className="mt-3 space-y-2 text-slate-300">
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-purple-400" /> +33 6 07 83 18 18</li>
               <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-purple-400" /> lg-conseil@bonnifay.eu</li>
               <li className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-purple-400" />
