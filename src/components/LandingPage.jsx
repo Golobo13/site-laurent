@@ -39,9 +39,7 @@ const NAV_ITEMS = [
   { href: "#temoignages", label: "Témoignages" },
   { href: "#conseils", label: "Publications" },
   { href: "#faq", label: "Faq" },
-  { href: "#contact", label: "Vos besoins" },
   { href: "#contact", label: "Contact" },
-  { href: "#rdv", label: "Prendre rdv" },
 ];
 
 // 🎨 Palette (sobre, rassurante)
@@ -93,13 +91,13 @@ const GlowingCard = ({ children, className = "", glow = true }) => (
   </div>
 );
 
-const ShimmerButton = ({ children, className = "", ...props }) => (
-  <button 
+const ShimmerButton = ({ children, className = "", innerClassName = "bg-slate-950 text-white hover:bg-slate-900", ...props }) => (
+  <button
     className={`relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-50 ${className}`}
     {...props}
   >
     <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#9333ea_0%,#7c3aed_50%,#9333ea_100%)]" />
-    <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl gap-2 hover:bg-slate-900 transition-colors">
+    <span className={`inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl px-6 py-2 text-sm font-medium backdrop-blur-3xl gap-2 transition-colors ${innerClassName}`}>
       {children}
     </span>
   </button>
@@ -136,16 +134,15 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
-            Prenez rendez‑vous
+            Prenons rendez‑vous
           </ShimmerButton>
-          <button
-            type="button"
+          <ShimmerButton
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+            innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
           >
-            <span>Discutons de vos besoins</span>
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+            Discutons de vos besoins
+            <ArrowRight className="h-4 w-4" />
+          </ShimmerButton>
         </div>
       )}
     </div>
@@ -566,16 +563,16 @@ export default function LandingPage() {
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
                 <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
                   <CalendarClock className="h-5 w-5" />
-                  Prenez rendez‑vous
+                  Prenons rendez‑vous
                 </ShimmerButton>
 
-                <button
+                <ShimmerButton
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+                  innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
                 >
-                  <span>Discutons de vos besoins</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
+                  Discutons de vos besoins
+                  <ArrowRight className="h-4 w-4" />
+                </ShimmerButton>
               </div>
             </div>
             
@@ -952,16 +949,15 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
-            Prenez rendez‑vous
+            Prenons rendez‑vous
           </ShimmerButton>
-          <button
-            type="button"
+          <ShimmerButton
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+            innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
           >
-            <span>Discutons de vos besoins</span>
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+            Discutons de vos besoins
+            <ArrowRight className="h-4 w-4" />
+          </ShimmerButton>
         </div>
       </Section>
 
