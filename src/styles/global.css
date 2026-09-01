@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  overflow-x: hidden;
+}
+
 /* Animations personnalisées pour les composants modernes */
 @keyframes fade-in-up {
   from {
