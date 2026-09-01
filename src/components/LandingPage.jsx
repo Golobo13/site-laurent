@@ -881,6 +881,12 @@ export default function LandingPage() {
             </a>
           </div>
         </Card>
+
+        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+            Discutons de vos besoins
+          </PillButton>
+        </div>
       </Section>
 
       {/* --- Social Proof --- */}
