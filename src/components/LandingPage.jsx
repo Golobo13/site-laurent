@@ -972,7 +972,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Contact --- */}
-      <Section id="contact" kicker="Contact" title="Discutons de vos besoins">
+      <Section id="contact" kicker="Contact" title="Discutons de vos besoins" showCta={false}>
         <div className="grid gap-8 md:grid-cols-2">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
@@ -1082,6 +1082,13 @@ export default function LandingPage() {
               </div>
             </Card>
           </div>
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+            <CalendarClock className="h-4 w-4" />
+            Prenons rendez‑vous
+          </PillButton>
         </div>
       </Section>
 
