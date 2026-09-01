@@ -20,6 +20,7 @@ import {
   Menu,
   Linkedin,
   Home,
+  MessagesSquare,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -148,6 +149,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             Prenons rendez‑vous
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+            <MessagesSquare className="h-4 w-4" />
             Discutons de vos besoins
           </PillButton>
         </div>
@@ -574,6 +576,7 @@ export default function LandingPage() {
                 </PillButton>
 
                 <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+                  <MessagesSquare className="h-5 w-5" />
                   Discutons de vos besoins
                 </PillButton>
               </div>
@@ -884,6 +887,7 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+            <MessagesSquare className="h-4 w-4" />
             Discutons de vos besoins
           </PillButton>
         </div>
@@ -961,6 +965,7 @@ export default function LandingPage() {
             Prenons rendez‑vous
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+            <MessagesSquare className="h-4 w-4" />
             Discutons de vos besoins
           </PillButton>
         </div>
