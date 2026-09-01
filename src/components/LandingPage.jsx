@@ -36,8 +36,10 @@ const NAV_ITEMS = [
   { href: "#pourquoi", label: "Pourquoi" },
   { href: "#ressources", label: "Ressources" },
   { href: "#temoignages", label: "Témoignages" },
-  { href: "#rdv", label: "Prendre RDV" },
+  { href: "#conseils", label: "Publications" },
+  { href: "#faq", label: "Questions fréquentes" },
   { href: "#contact", label: "Contact" },
+  { href: "#rdv", label: "Prendre rendez-vous" },
 ];
 
 // 🎨 Palette (sobre, rassurante)
@@ -437,7 +439,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <nav className="hidden items-center gap-5 lg:flex">
+          <nav className="hidden items-center gap-4 min-[1650px]:flex">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -449,7 +451,7 @@ export default function LandingPage() {
               </a>
             ))}
           </nav>
-          <div className="hidden flex-shrink-0 lg:block">
+          <div className="hidden flex-shrink-0 min-[1650px]:block">
             <ShimmerButton
               onClick={() => window.open(SITE.calendlyUrl, '_blank')}
               className="whitespace-nowrap"
@@ -463,14 +465,14 @@ export default function LandingPage() {
             onClick={() => setMobileMenuOpen((v) => !v)}
             aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={mobileMenuOpen}
-            className="flex-shrink-0 rounded-lg border border-slate-700/60 bg-slate-900/60 p-2.5 text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors lg:hidden"
+            className="flex-shrink-0 rounded-lg border border-slate-700/60 bg-slate-900/60 p-2.5 text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors min-[1650px]:hidden"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl lg:hidden">
+          <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl min-[1650px]:hidden">
             <nav className="mx-auto flex max-w-[1800px] flex-col gap-1 px-4 py-4 sm:px-6 lg:px-10">
               {NAV_ITEMS.map((item) => (
                 <a
