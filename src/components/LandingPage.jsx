@@ -18,6 +18,7 @@ import {
   Star,
   X,
   Menu,
+  Linkedin,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -564,7 +565,7 @@ export default function LandingPage() {
             </div>
             
             <div className="relative min-w-0 space-y-4 md:ml-auto max-w-xl">
-              <MagicCard className="min-h-[316px]">
+              <MagicCard className="min-h-[352px]">
                 <button
                   type="button"
                   onClick={() =>
@@ -591,56 +592,67 @@ export default function LandingPage() {
                   des chiffres en décisions et des décisions en résultats.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-3">
                   <button
                     type="button"
                     onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI Marseille" })}
-                    className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-red-400"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-red-400"
                     aria-label="Agrandir le logo BNI"
                   >
                     <img
                       src="/bni-logo.jpg"
                       alt="BNI Marseille"
-                      className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+                      className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI Marseille</span>
+                    <span className="whitespace-nowrap text-sm font-medium text-red-200">BNI Marseille</span>
                   </button>
                   <button
                     type="button"
                     onClick={() =>
                       setLightboxImage({ src: "/gcl-logo.png", alt: "GCL, les experts du Conseil" })
                     }
-                    className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1 pl-1 pr-3 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-green-500/40 bg-gradient-to-r from-green-500/20 to-emerald-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-green-400"
                     aria-label="Agrandir le logo GCL"
                   >
                     <img
                       src="/gcl-logo.png"
                       alt="GCL, les experts du Conseil"
-                      className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+                      className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-[11px] font-medium text-green-200">Réseau GCL</span>
+                    <span className="whitespace-nowrap text-sm font-medium text-green-200">Réseau GCL</span>
                   </button>
                   <button
                     type="button"
                     onClick={() =>
                       setLightboxImage({ src: "/bpifrance-creation-logo.jpg", alt: "Bpifrance Création" })
                     }
-                    className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-purple-500/40 bg-gradient-to-r from-purple-500/20 to-blue-500/20 py-1 pl-1 pr-3 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-purple-500/40 bg-gradient-to-r from-purple-500/20 to-blue-500/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     aria-label="Agrandir le logo Bpifrance Création"
                   >
                     <img
                       src="/bpifrance-creation-logo.jpg"
                       alt="Bpifrance Création"
-                      className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+                      className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-[11px] font-medium text-purple-200">
+                    <span className="whitespace-nowrap text-sm font-medium text-purple-200">
                       Conseiller en création d'entreprise
                     </span>
                   </button>
+                  <a
+                    href="https://linkedin.com/in/laurent-garnero-13016"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-sky-500/40 bg-gradient-to-r from-sky-500/20 to-blue-600/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  >
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-sky-500">
+                      <Linkedin className="h-6 w-6 text-white" />
+                    </span>
+                    <span className="whitespace-nowrap text-sm font-medium text-sky-200">LinkedIn</span>
+                  </a>
                 </div>
               </MagicCard>
 
-              <MagicCard className="min-h-[316px]">
+              <MagicCard className="min-h-[352px]">
                 <button
                   type="button"
                   onClick={() =>
@@ -670,19 +682,19 @@ export default function LandingPage() {
                   le développement, ainsi que la cession et la reprise d'entreprise.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-3">
                   <button
                     type="button"
                     onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI Marseille" })}
-                    className="inline-flex flex-shrink-0 items-center gap-2 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1 pl-1 pr-3 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-red-400"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-red-400"
                     aria-label="Agrandir le logo BNI"
                   >
                     <img
                       src="/bni-logo.jpg"
                       alt="BNI Marseille"
-                      className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
+                      className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-[11px] font-medium text-red-200">BNI Marseille</span>
+                    <span className="whitespace-nowrap text-sm font-medium text-red-200">BNI Marseille</span>
                   </button>
                 </div>
               </MagicCard>
