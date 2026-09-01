@@ -972,7 +972,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- FAQ --- */}
-      <Section id="faq" kicker="Questions fréquentes" title="Tout ce que vous voulez savoir">
+      <Section id="faq" kicker="Foire aux questions" title="Tout ce que vous voulez savoir">
         <Accordion items={faq} />
       </Section>
 
