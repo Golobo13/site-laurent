@@ -33,13 +33,13 @@ const SITE = {
 
 const NAV_ITEMS = [
   { href: "#missions", label: "Missions" },
-  { href: "#pourquoi", label: "Pourquoi" },
+  { href: "#pourquoi", label: "Pourquoi ?" },
   { href: "#ressources", label: "Ressources" },
   { href: "#temoignages", label: "Témoignages" },
   { href: "#conseils", label: "Publications" },
-  { href: "#faq", label: "Questions fréquentes" },
+  { href: "#faq", label: "Faq" },
   { href: "#contact", label: "Contact" },
-  { href: "#rdv", label: "Prendre rendez-vous" },
+  { href: "#rdv", label: "Prendre rdv" },
 ];
 
 // 🎨 Palette (sobre, rassurante)
@@ -695,7 +695,7 @@ export default function LandingPage() {
       </section>
 
       {/* --- Services --- */}
-      <Section id="missions" kicker="Les missions des experts en gestion d'entreprise" title="Pilotage & accompagnement création, reprise, cession et transmission">
+      <Section id="missions" kicker="Nos missions" title="Pilotage & accompagnement création, reprise, cession et transmission">
         <div className="grid gap-8 md:grid-cols-3">
           <ServiceCard
             icon={TrendingUp}
@@ -747,9 +747,9 @@ export default function LandingPage() {
               </p>
             </Card>
             <Card>
-              <h3 className="text-lg font-semibold text-white">Un ROI mesurable</h3>
+              <h3 className="text-lg font-semibold text-white">Un retour sur investissement mesurable</h3>
               <p className="mt-2 text-slate-300">
-                Objectifs chiffrés, gains identifiés, suivi simple. On parle résultats, pas jargon.
+                Objectifs chiffrés, gains identifiés, suivi simple. On parle résultats.
               </p>
             </Card>
           </div>
