@@ -444,21 +444,12 @@ export default function LandingPage() {
               <a
                 key={item.href}
                 href={item.href}
-                className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
+                className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-bold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <div className="hidden flex-shrink-0 min-[1650px]:block">
-            <ShimmerButton
-              onClick={() => window.open(SITE.calendlyUrl, '_blank')}
-              className="whitespace-nowrap"
-            >
-              <CalendarClock className="h-4 w-4" />
-              Prendre RDV
-            </ShimmerButton>
-          </div>
           <button
             type="button"
             onClick={() => setMobileMenuOpen((v) => !v)}
@@ -478,23 +469,11 @@ export default function LandingPage() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
+                  className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-bold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
                 >
                   {item.label}
                 </a>
               ))}
-              <div className="pt-2">
-                <ShimmerButton
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    window.open(SITE.calendlyUrl, '_blank');
-                  }}
-                  className="w-full justify-center whitespace-nowrap"
-                >
-                  <CalendarClock className="h-4 w-4" />
-                  Prendre RDV
-                </ShimmerButton>
-              </div>
             </nav>
           </div>
         )}
