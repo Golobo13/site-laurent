@@ -696,6 +696,17 @@ export default function LandingPage() {
                     />
                     <span className="whitespace-nowrap text-sm font-medium text-red-200">BNI Marseille</span>
                   </button>
+                  <a
+                    href="https://www.linkedin.com/in/glbonnifay"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-sky-500/40 bg-gradient-to-r from-sky-500/20 to-blue-600/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  >
+                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-sky-500">
+                      <Linkedin className="h-6 w-6 text-white" />
+                    </span>
+                    <span className="whitespace-nowrap text-sm font-medium text-sky-200">LinkedIn</span>
+                  </a>
                 </div>
               </MagicCard>
             </div>
