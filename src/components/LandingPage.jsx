@@ -138,10 +138,14 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             <CalendarClock className="h-4 w-4" />
             Prenez rendez‑vous
           </ShimmerButton>
-          <ShimmerButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-            Discutons de vos besoins
-            <ArrowRight className="h-4 w-4" />
-          </ShimmerButton>
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+          >
+            <span>Discutons de vos besoins</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       )}
     </div>
@@ -565,10 +569,13 @@ export default function LandingPage() {
                   Prenez rendez‑vous
                 </ShimmerButton>
 
-                <ShimmerButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-                  Discutons de vos besoins
-                  <ArrowRight className="h-4 w-4" />
-                </ShimmerButton>
+                <button
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+                >
+                  <span>Discutons de vos besoins</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </div>
             
@@ -947,10 +954,14 @@ export default function LandingPage() {
             <CalendarClock className="h-4 w-4" />
             Prenez rendez‑vous
           </ShimmerButton>
-          <ShimmerButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-            Discutons de vos besoins
-            <ArrowRight className="h-4 w-4" />
-          </ShimmerButton>
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-900/50 px-6 text-sm font-medium text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50 hover:bg-slate-800/50 hover:text-white"
+          >
+            <span>Discutons de vos besoins</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </Section>
 
