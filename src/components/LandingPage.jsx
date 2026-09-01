@@ -1039,7 +1039,9 @@ export default function LandingPage() {
         </div>
       </Section>
 
-      {/* --- Conseils / LinkedIn --- */}
+      {/* --- Conseils / LinkedIn + Footer : min-h-screen pour garantir assez d'espace de défilement afin que
+           l'ancre #conseils puisse s'aligner sous l'en-tête fixe, même sur les grands écrans (dernière section) --- */}
+      <div className="min-h-screen">
       <Section id="conseils" kicker="LinkedIn" title="Publications de Laurent">
         <div className="grid gap-6 md:grid-cols-3">
           {[
@@ -1130,6 +1132,7 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      </div>
 
       <CookieBar />
 
