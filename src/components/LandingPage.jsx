@@ -977,7 +977,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Contact --- */}
-      <Section id="contact" kicker="Contact" title="Discutons de vos besoins" showCta={false}>
+      <Section id="contact" kicker="Discutons de vos besoins" showCta={false}>
         <div className="grid gap-8 md:grid-cols-2">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
