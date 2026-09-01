@@ -425,7 +425,6 @@ export default function LandingPage() {
   const [status, setStatus] = useState("idle");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [pubStart, setPubStart] = useState(0);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -433,19 +432,6 @@ export default function LandingPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setPubStart((i) => (i + 1) % PUBLICATIONS.length);
-    }, 10000);
-    return () => clearInterval(id);
-  }, []);
-
-  const visiblePublications = useMemo(() => {
-    const n = PUBLICATIONS.length;
-    const count = Math.min(3, n);
-    return Array.from({ length: count }, (_, i) => PUBLICATIONS[(pubStart + i) % n]);
-  }, [pubStart]);
 
   const faq = useMemo(
     () => [
@@ -1120,10 +1106,10 @@ export default function LandingPage() {
            l'ancre #conseils puisse s'aligner sous l'en-tête fixe, même sur les grands écrans (dernière section) --- */}
       <div className="min-h-screen">
       <Section id="conseils" kicker="Publications" title="Laurent">
-        <div key={pubStart} className="grid gap-6 md:grid-cols-3 animate-fade-in-up">
-          {visiblePublications.map((article, idx) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {PUBLICATIONS.map((article, idx) => (
             <a
-              key={`${pubStart}-${idx}`}
+              key={idx}
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -1154,22 +1140,6 @@ export default function LandingPage() {
             </a>
           ))}
         </div>
-
-        {PUBLICATIONS.length > 3 && (
-          <div className="mt-5 flex items-center justify-center gap-2">
-            {PUBLICATIONS.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                aria-label={`Faire défiler jusqu'à la publication ${idx + 1}`}
-                onClick={() => setPubStart(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  idx === pubStart ? "w-6 bg-purple-400" : "w-2 bg-slate-600 hover:bg-slate-500"
-                }`}
-              />
-            ))}
-          </div>
-        )}
         <div className="mt-8 flex items-center justify-center gap-3">
           <a
             href="https://www.linkedin.com/in/laurent-garnero-13016"
