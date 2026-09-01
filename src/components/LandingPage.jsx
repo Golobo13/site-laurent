@@ -103,6 +103,17 @@ const ShimmerButton = ({ children, className = "", innerClassName = "bg-slate-95
   </button>
 );
 
+// Même style que les bannières de navigation (forme, couleur, typo)
+const PillButton = ({ children, className = "", ...props }) => (
+  <button
+    type="button"
+    className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-bold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white ${className}`}
+    {...props}
+  >
+    {children}
+  </button>
+);
+
 const MagicCard = ({ children, className = "" }) => (
   <div className={`group relative overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl ${className}`}>
     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -132,17 +143,14 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+          <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
-          </ShimmerButton>
-          <ShimmerButton
-            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
-          >
+          </PillButton>
+          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             Discutons de vos besoins
             <ArrowRight className="h-4 w-4" />
-          </ShimmerButton>
+          </PillButton>
         </div>
       )}
     </div>
@@ -561,18 +569,15 @@ export default function LandingPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
-                <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+                <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
                   <CalendarClock className="h-5 w-5" />
                   Prenons rendez‑vous
-                </ShimmerButton>
+                </PillButton>
 
-                <ShimmerButton
-                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                  innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
-                >
+                <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
                   Discutons de vos besoins
                   <ArrowRight className="h-4 w-4" />
-                </ShimmerButton>
+                </PillButton>
               </div>
             </div>
             
@@ -947,17 +952,14 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+          <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
-          </ShimmerButton>
-          <ShimmerButton
-            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            innerClassName="bg-slate-900/70 text-slate-200 hover:bg-slate-800/80 hover:text-white"
-          >
+          </PillButton>
+          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             Discutons de vos besoins
             <ArrowRight className="h-4 w-4" />
-          </ShimmerButton>
+          </PillButton>
         </div>
       </Section>
 
