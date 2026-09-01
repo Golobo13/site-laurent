@@ -143,13 +143,12 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             Discutons de vos besoins
-            <ArrowRight className="h-4 w-4" />
           </PillButton>
         </div>
       )}
@@ -569,18 +568,17 @@ export default function LandingPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
-                <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+                <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
                   <CalendarClock className="h-5 w-5" />
                   Prenons rendez‑vous
                 </PillButton>
 
                 <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
                   Discutons de vos besoins
-                  <ArrowRight className="h-4 w-4" />
                 </PillButton>
               </div>
             </div>
-            
+
             <div className="relative min-w-0 space-y-4 md:ml-auto max-w-xl">
               <MagicCard className="min-h-[352px]">
                 <button
@@ -859,7 +857,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Réservation --- */}
-      <Section id="rdv" kicker="Prendre rendez‑vous" title="Réservez un appel de découverte" showCta={false}>
+      <Section id="rdv" kicker="Prenons rendez‑vous" title="Réservez un appel de découverte" showCta={false}>
         <Card>
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
             <div>
@@ -952,13 +950,12 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             Discutons de vos besoins
-            <ArrowRight className="h-4 w-4" />
           </PillButton>
         </div>
       </Section>
