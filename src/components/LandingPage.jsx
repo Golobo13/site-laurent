@@ -613,11 +613,7 @@ export default function LandingPage() {
                       alt="BNI Marseille"
                       className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="text-sm font-medium leading-tight text-red-200">
-                      BNI Marseille
-                      <br />
-                      certifié
-                    </span>
+                    <span className="whitespace-nowrap text-sm font-medium text-red-200">BNI Marseille</span>
                   </a>
                   <button
                     type="button"
@@ -647,8 +643,10 @@ export default function LandingPage() {
                       alt="Bpifrance Création"
                       className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-sm font-medium text-purple-200">
+                    <span className="text-sm font-medium leading-tight text-purple-200">
                       Conseiller en création d'entreprise
+                      <br />
+                      certifié BPI
                     </span>
                   </button>
                   <a
