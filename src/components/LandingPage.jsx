@@ -19,6 +19,7 @@ import {
   X,
   Menu,
   Linkedin,
+  Home,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -38,6 +39,7 @@ const NAV_ITEMS = [
   { href: "#temoignages", label: "Témoignages" },
   { href: "#conseils", label: "Publications" },
   { href: "#faq", label: "Faq" },
+  { href: "#contact", label: "Vos besoins" },
   { href: "#contact", label: "Contact" },
   { href: "#rdv", label: "Prendre rdv" },
 ];
@@ -113,7 +115,7 @@ const MagicCard = ({ children, className = "" }) => (
   </div>
 );
 
-const Section = ({ id, title, kicker, children }) => (
+const Section = ({ id, title, kicker, children, showCta = true }) => (
   <section id={id} className="scroll-mt-24 py-16 md:py-24 relative">
     <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10">
       {kicker && (
@@ -130,6 +132,14 @@ const Section = ({ id, title, kicker, children }) => (
         </h2>
       )}
       <div className="mt-8 text-slate-300">{children}</div>
+      {showCta && (
+        <div className="mt-10 text-center">
+          <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
+            <CalendarClock className="h-4 w-4" />
+            Prenez rendez‑vous
+          </ShimmerButton>
+        </div>
+      )}
     </div>
   </section>
 );
@@ -440,9 +450,17 @@ export default function LandingPage() {
             </div>
           </div>
           <nav className="hidden items-center gap-2.5 min-[1650px]:flex">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label="Retour en haut de la page"
+              className="flex-shrink-0 rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-2.5 text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
+            >
+              <Home className="h-4 w-4" />
+            </button>
             {NAV_ITEMS.map((item) => (
               <a
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-bold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
               >
@@ -464,9 +482,20 @@ export default function LandingPage() {
         {mobileMenuOpen && (
           <div className="border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl min-[1650px]:hidden">
             <nav className="mx-auto flex max-w-[1800px] flex-wrap gap-2 px-4 py-4 sm:px-6 lg:px-10">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                aria-label="Retour en haut de la page"
+                className="flex-shrink-0 rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-2.5 text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
+              >
+                <Home className="h-4 w-4" />
+              </button>
               {NAV_ITEMS.map((item) => (
                 <a
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="whitespace-nowrap rounded-full border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-4 py-2 text-sm font-bold text-slate-200 backdrop-blur-sm transition-all duration-300 hover:border-purple-400/60 hover:from-purple-500/20 hover:to-blue-500/20 hover:text-white"
@@ -506,7 +535,7 @@ export default function LandingPage() {
               </h1>
 
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                <strong>Experts en gestions d'entreprise à Marseille</strong>, nous accompagnons les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité.
+                <strong>Experts en gestion d'entreprise à Marseille</strong>, nous accompagnons les créateurs et dirigeants (TPE/PME) pour clarifier la vision, sécuriser la trésorerie, et améliorer la rentabilité.
               </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -573,19 +602,23 @@ export default function LandingPage() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setLightboxImage({ src: "/bni-logo.jpg", alt: "BNI Marseille" })}
+                  <a
+                    href="https://bnifrance.fr/fr/chapterdetail?chapterId=buI4TNm6URALTJGIuVUuKw%3D%3D&name=13-77%20BNI%20Marseille%20Gyptis"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-full border border-red-500/40 bg-gradient-to-r from-red-500/20 to-red-600/20 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-red-400"
-                    aria-label="Agrandir le logo BNI"
                   >
                     <img
                       src="/bni-logo.jpg"
                       alt="BNI Marseille"
                       className="h-11 w-11 flex-shrink-0 rounded-full object-cover"
                     />
-                    <span className="whitespace-nowrap text-sm font-medium text-red-200">BNI Marseille</span>
-                  </button>
+                    <span className="text-sm font-medium leading-tight text-red-200">
+                      BNI Marseille
+                      <br />
+                      certifié
+                    </span>
+                  </a>
                   <button
                     type="button"
                     onClick={() =>
@@ -820,7 +853,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Réservation --- */}
-      <Section id="rdv" kicker="Prendre rendez‑vous" title="Réservez un appel de découverte">
+      <Section id="rdv" kicker="Prendre rendez‑vous" title="Réservez un appel de découverte" showCta={false}>
         <Card>
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
             <div>
@@ -847,7 +880,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Social Proof --- */}
-      <Section id="temoignages" kicker="Ils témoignent" title="Ce que disent mes clients">
+      <Section id="temoignages" kicker="Ils témoignent" title="Ce que disent mes clients" showCta={false}>
         <div className="grid gap-8 md:grid-cols-2">
           {/* Témoignage 1 */}
           <div className="group relative">
@@ -915,7 +948,7 @@ export default function LandingPage() {
         <div className="mt-10 text-center">
           <ShimmerButton onClick={() => window.open(SITE.calendlyUrl, '_blank')}>
             <CalendarClock className="h-4 w-4" />
-            Rejoignez-les — Réservez votre appel gratuit
+            Prenez rendez‑vous
           </ShimmerButton>
         </div>
       </Section>
@@ -926,7 +959,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Contact --- */}
-      <Section id="contact" kicker="Contact" title="Discutons de votre situation">
+      <Section id="contact" kicker="Contact" title="Discutons de vos besoins">
         <div className="grid gap-8 md:grid-cols-2">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
