@@ -860,7 +860,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Réservation --- */}
-      <Section id="rdv" kicker="Prenons rendez‑vous" title="Réservez un appel de découverte" showCta={false}>
+      <Section id="rdv" kicker="Prenons rendez‑vous" title="Réservez un appel découverte" showCta={false}>
         <Card>
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
             <div>
