@@ -302,45 +302,6 @@ const Accordion = ({ items }) => {
   );
 };
 
-const CookieBar = () => {
-  const [seen, setSeen] = useState(false);
-  useEffect(() => {
-    setSeen(localStorage.getItem("consent") === "given");
-  }, []);
-  if (seen) return null;
-  return (
-    <div className="fixed inset-x-0 bottom-4 z-50 mx-auto w-[95%] rounded-2xl border border-slate-700/70 bg-slate-900/90 p-4 text-sm text-slate-200 shadow-2xl md:max-w-3xl">
-      <div className="flex items-start gap-4">
-        <Shield className="mt-1 h-5 w-5" />
-        <p>
-          Nous utilisons des cookies strictement nécessaires et, avec votre accord, des mesures d'audience.
-          <a href="/confidentialite" className="ml-2 underline">En savoir plus</a>.
-        </p>
-      </div>
-      <div className="mt-3 flex justify-end gap-2">
-        <button
-          className="rounded-xl border border-slate-600 px-3 py-2 hover:bg-slate-800"
-          onClick={() => {
-            localStorage.setItem("consent", "denied");
-            setSeen(true);
-          }}
-        >
-          Refuser
-        </button>
-        <button
-          className="rounded-xl bg-purple-600 px-3 py-2 font-medium text-white hover:bg-purple-500"
-          onClick={() => {
-            localStorage.setItem("consent", "given");
-            setSeen(true);
-          }}
-        >
-          Accepter
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const RESOURCES = [
   {
     title: "20 points de contrôle avant de créer sa société",
@@ -1238,18 +1199,16 @@ export default function LandingPage() {
                 {" · "}
                 <a href="/confidentialite" className="hover:text-slate-300 hover:underline">Politique de confidentialité</a>
                 {" · "}
-                <a href="/confidentialite" className="hover:text-slate-300 hover:underline">RGPD</a> (bannières cookies, finalités, durée et droits d'accès).
+                <a href="/confidentialite" className="hover:text-slate-300 hover:underline">RGPD</a> (finalités, durée de conservation et droits d'accès).
               </p>
             </div>
             <div className="text-sm text-slate-400">
-              <p>Ce site n'utilise des traceurs qu'avec votre consentement. Analytics recommandé : Matomo/Umami auto‑hébergé.</p>
+              <p>Ce site n'utilise que des cookies techniques strictement nécessaires à son fonctionnement, aucun traceur publicitaire ni outil de mesure d'audience.</p>
             </div>
           </div>
         </div>
       </footer>
       </div>
-
-      <CookieBar />
 
       <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
 
