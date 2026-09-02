@@ -226,7 +226,7 @@ const Card = ({ children, className = "" }) => (
   </GlowingCard>
 );
 
-const Input = ({ label, type = "text", id, required, placeholder, value, onChange, onBlur, error, autoFocus, blink }) => (
+const Input = ({ label, type = "text", id, required, placeholder, value, onChange, onBlur, error, autoFocus, blink, inputMode, pattern }) => (
   <label className="block text-sm group">
     <span className="mb-2 block text-slate-200 font-medium">
       {label}
@@ -250,6 +250,8 @@ const Input = ({ label, type = "text", id, required, placeholder, value, onChang
         onBlur={onBlur}
         aria-invalid={error || blink ? "true" : undefined}
         autoFocus={autoFocus}
+        inputMode={inputMode}
+        pattern={pattern}
       />
       <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
@@ -1248,11 +1250,14 @@ export default function LandingPage() {
                 <Input
                   label="Téléphone"
                   type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   required
                   blink={fieldErrors.phone}
                   value={form.phone}
                   onChange={(e) => {
-                    setForm({ ...form, phone: e.target.value });
+                    const digitsOnly = e.target.value.replace(/\D/g, "");
+                    setForm({ ...form, phone: digitsOnly });
                     if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: false });
                   }}
                 />

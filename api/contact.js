@@ -40,6 +40,11 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Adresse email invalide." });
     }
 
+    const phoneOk = /^[0-9]+$/.test(phone);
+    if (!phoneOk) {
+      return res.status(400).json({ error: "Le téléphone ne doit contenir que des chiffres." });
+    }
+
     const name = `${firstName} ${lastName}`.trim();
     const civilityLabel =
       civility === "madame" ? "Madame" :
