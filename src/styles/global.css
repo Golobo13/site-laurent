@@ -52,6 +52,24 @@ html {
   }
 }
 
+/* Champ de formulaire signalé comme obligatoire et non renseigné */
+@keyframes field-blink {
+  0%, 100% {
+    border-color: rgba(250, 204, 21, 0.9);
+    background-color: rgba(250, 204, 21, 0.12);
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+  }
+  50% {
+    border-color: rgba(250, 204, 21, 0.35);
+    background-color: rgba(250, 204, 21, 0.02);
+    box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+  }
+}
+
+.field-error-blink {
+  animation: field-blink 1s ease-in-out infinite;
+}
+
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out forwards;
 }

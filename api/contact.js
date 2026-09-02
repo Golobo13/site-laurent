@@ -24,14 +24,14 @@ export default async function handler(req, res) {
 
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
-    const { civility, civilityOther, firstName, lastName, email, phone, companyName, city, sector, message, consent, website } = body;
+    const { civility, firstName, lastName, email, phone, companyName, city, sector, message, consent, website } = body;
 
     // Honeypot anti-spam : ce champ est invisible pour un humain, seuls les bots le remplissent.
     if (website) {
       return res.status(200).json({ ok: true });
     }
 
-    if (!firstName || !lastName || !email || !message || !consent) {
+    if (!firstName || !lastName || !email || !phone || !companyName || !message || !consent) {
       return res.status(400).json({ error: "Champs requis manquants." });
     }
 
@@ -44,7 +44,6 @@ export default async function handler(req, res) {
     const civilityLabel =
       civility === "madame" ? "Madame" :
       civility === "monsieur" ? "Monsieur" :
-      civility === "libre" ? (civilityOther || "Autre (non précisé)") :
       "—";
 
     const apiKey = process.env.RESEND_API_KEY;

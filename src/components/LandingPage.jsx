@@ -22,6 +22,7 @@ import {
   Home,
   MessagesSquare,
   Construction,
+  AlertTriangle,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -225,21 +226,30 @@ const Card = ({ children, className = "" }) => (
   </GlowingCard>
 );
 
-const Input = ({ label, type = "text", id, required, placeholder, value, onChange, onBlur, error }) => (
+const Input = ({ label, type = "text", id, required, placeholder, value, onChange, onBlur, error, autoFocus, blink }) => (
   <label className="block text-sm group">
-    <span className="mb-2 block text-slate-200 font-medium">{label}</span>
+    <span className="mb-2 block text-slate-200 font-medium">
+      {label}
+      {required && <span className="ml-0.5 text-red-500">*</span>}
+    </span>
     <div className="relative">
       <input
-        className={`w-full rounded-xl border ${error ? "border-red-500/70 focus:border-red-500" : "border-slate-600/70 focus:border-purple-500"} bg-slate-900/60 px-4 py-3 text-slate-100 outline-none backdrop-blur-sm transition-all duration-300 focus:ring-2 focus:ring-purple-500/30 focus:bg-slate-900/80 hover:border-slate-500/80`}
+        className={`w-full rounded-xl border px-4 py-3 text-slate-100 outline-none backdrop-blur-sm transition-all duration-300 focus:ring-2 focus:ring-purple-500/30 focus:bg-slate-900/80 hover:border-slate-500/80 ${
+          blink
+            ? "field-error-blink border-yellow-400"
+            : error
+            ? "border-red-500/70 bg-slate-900/60 focus:border-red-500"
+            : "border-slate-600/70 bg-slate-900/60 focus:border-purple-500"
+        }`}
         type={type}
         id={id}
         placeholder={placeholder}
         aria-label={label}
-        required={required}
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        aria-invalid={error ? "true" : undefined}
+        aria-invalid={error || blink ? "true" : undefined}
+        autoFocus={autoFocus}
       />
       <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
@@ -479,10 +489,54 @@ const RdvNoticeModal = ({ open, onClose }) => {
   );
 };
 
+const RequiredFieldsModal = ({ open, onClose }) => {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-6"
+      onClick={onClose}
+    >
+      <div className="relative w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="absolute -top-4 -right-4 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 p-8 text-center shadow-2xl">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-yellow-500/15 text-yellow-400">
+            <AlertTriangle className="h-7 w-7" />
+          </div>
+          <h3 className="mt-4 text-lg font-semibold text-white">Saisie obligatoire</h3>
+          <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+            Merci de renseigner tous les champs marqués d'un astérisque rouge (*) avant d'envoyer votre message.
+          </p>
+          <button
+            type="button"
+            onClick={onClose}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white hover:bg-purple-500"
+          >
+            J'ai compris
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function LandingPage() {
   const [form, setForm] = useState({
     civility: "",
-    civilityOther: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -496,6 +550,8 @@ export default function LandingPage() {
   });
   const [status, setStatus] = useState("idle");
   const [emailError, setEmailError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [requiredPopupOpen, setRequiredPopupOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rdvNoticeOpen, setRdvNoticeOpen] = useState(false);
@@ -547,8 +603,23 @@ export default function LandingPage() {
     return ok;
   };
 
+  const REQUIRED_FIELDS = ["firstName", "lastName", "email", "phone", "companyName"];
+
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const missing = {};
+    REQUIRED_FIELDS.forEach((key) => {
+      if (!String(form[key] || "").trim()) missing[key] = true;
+    });
+
+    if (Object.keys(missing).length > 0) {
+      setFieldErrors(missing);
+      setRequiredPopupOpen(true);
+      return;
+    }
+    setFieldErrors({});
+
     if (!isEmailValid(form.email)) {
       setEmailError("Adresse email invalide (ex : vous@domaine.fr).");
       return;
@@ -564,7 +635,6 @@ export default function LandingPage() {
       setStatus("success");
       setForm({
         civility: "",
-        civilityOther: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -577,6 +647,7 @@ export default function LandingPage() {
         website: "",
       });
       setEmailError("");
+      setFieldErrors({});
     } catch (e) {
       setStatus("error");
     }
@@ -1136,38 +1207,40 @@ export default function LandingPage() {
                   options={[
                     { value: "madame", label: "Madame" },
                     { value: "monsieur", label: "Monsieur" },
-                    { value: "libre", label: "Autre (saisie libre)" },
                   ]}
                 />
                 <Input
                   label="Prénom"
                   required
+                  blink={fieldErrors.firstName}
                   value={form.firstName}
-                  onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, firstName: e.target.value });
+                    if (fieldErrors.firstName) setFieldErrors({ ...fieldErrors, firstName: false });
+                  }}
                 />
                 <Input
                   label="Nom"
                   required
+                  blink={fieldErrors.lastName}
                   value={form.lastName}
-                  onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, lastName: e.target.value });
+                    if (fieldErrors.lastName) setFieldErrors({ ...fieldErrors, lastName: false });
+                  }}
                 />
               </div>
-              {form.civility === "libre" && (
-                <Input
-                  label="Précisez votre civilité"
-                  value={form.civilityOther}
-                  onChange={(e) => setForm({ ...form, civilityOther: e.target.value })}
-                />
-              )}
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Email"
                   type="email"
                   required
+                  blink={fieldErrors.email}
                   value={form.email}
                   onChange={(e) => {
                     setForm({ ...form, email: e.target.value });
                     if (emailError) setEmailError("");
+                    if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: false });
                   }}
                   onBlur={validateEmailField}
                   error={emailError}
@@ -1175,15 +1248,25 @@ export default function LandingPage() {
                 <Input
                   label="Téléphone"
                   type="tel"
+                  required
+                  blink={fieldErrors.phone}
                   value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, phone: e.target.value });
+                    if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: false });
+                  }}
                 />
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Raison sociale"
+                  required
+                  blink={fieldErrors.companyName}
                   value={form.companyName}
-                  onChange={(e) => setForm({ ...form, companyName: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, companyName: e.target.value });
+                    if (fieldErrors.companyName) setFieldErrors({ ...fieldErrors, companyName: false });
+                  }}
                 />
                 <Input
                   label="Ville"
@@ -1374,6 +1457,8 @@ export default function LandingPage() {
       <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
 
       <RdvNoticeModal open={rdvNoticeOpen} onClose={() => setRdvNoticeOpen(false)} />
+
+      <RequiredFieldsModal open={requiredPopupOpen} onClose={() => setRequiredPopupOpen(false)} />
 
       {/* --- JSON‑LD minimal pour le SEO local --- */}
       <script
