@@ -1,11 +1,19 @@
 // Fonction serverless Vercel — reçoit les soumissions du formulaire de contact
 // du site et les envoie par email via l'API Resend (https://resend.com).
+// Envoie deux emails : une notification interne (à CONTACT_TO_EMAIL, peut être
+// une simple adresse Gmail) et un accusé de réception au contact lui-même,
+// avec le récapitulatif de ce qu'il a transmis.
 //
 // Variables d'environnement à configurer sur Vercel (Project Settings > Environment Variables) :
 //   RESEND_API_KEY     — clé API Resend (obligatoire)
-//   CONTACT_TO_EMAIL    — adresse qui reçoit les messages (défaut : l.garnero@expertgcl.fr)
+//   CONTACT_TO_EMAIL    — adresse qui reçoit les messages, ex. une adresse Gmail (défaut : l.garnero@expertgcl.fr)
 //   CONTACT_FROM_EMAIL  — adresse d'expédition, doit venir d'un domaine vérifié dans Resend
 //                          (défaut : l'adresse de test "onboarding@resend.dev", limitée en envoi)
+//
+// Important : tant qu'aucun domaine n'est vérifié dans Resend, le compte est en
+// mode « bac à sable » et ne peut envoyer qu'à l'adresse utilisée pour créer le
+// compte Resend. L'accusé de réception au contact (adresse variable, saisie par
+// lui) ne sera donc réellement délivré qu'une fois un domaine vérifié dans Resend.
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -60,8 +68,7 @@ export default async function handler(req, res) {
     const to = process.env.CONTACT_TO_EMAIL || "l.garnero@expertgcl.fr";
     const from = process.env.CONTACT_FROM_EMAIL || "LG Conseil <onboarding@resend.dev>";
 
-    const html = `
-      <h2>Nouveau message depuis le site LG Conseil</h2>
+    const recap = `
       <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
       <p><strong>Civilité :</strong> ${escapeHtml(civilityLabel)}</p>
       <p><strong>Email :</strong> ${escapeHtml(email)}</p>
@@ -71,6 +78,11 @@ export default async function handler(req, res) {
       <p><strong>Secteur d'activité :</strong> ${escapeHtml(sector) || "—"}</p>
       <p><strong>Message :</strong></p>
       <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+    `;
+
+    const html = `
+      <h2>Nouveau message depuis le site LG Conseil</h2>
+      ${recap}
     `;
 
     const resendRes = await fetch("https://api.resend.com/emails", {
@@ -92,6 +104,41 @@ export default async function handler(req, res) {
       const errText = await resendRes.text();
       console.error("Erreur Resend:", resendRes.status, errText);
       return res.status(502).json({ error: "Erreur lors de l'envoi de l'email." });
+    }
+
+    // Email de confirmation envoyé au contact lui-même : accusé de réception +
+    // récapitulatif de ce qu'il a transmis. Un échec ici ne doit pas faire
+    // échouer la soumission du formulaire (le message principal est déjà parti) :
+    // on log l'erreur sans bloquer la réponse.
+    try {
+      const confirmationHtml = `
+        <p>Bonjour ${escapeHtml(firstName)},</p>
+        <p>Nous avons bien reçu votre message et vous en remercions. Notre équipe reviendra vers vous très prochainement.</p>
+        <p>Voici un récapitulatif des informations que vous nous avez transmises :</p>
+        ${recap}
+        <p>Cordialement,<br/>L'équipe LG Conseil</p>
+      `;
+
+      const confirmationRes = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: [email],
+          subject: "Nous avons bien reçu votre message — LG Conseil",
+          html: confirmationHtml,
+        }),
+      });
+
+      if (!confirmationRes.ok) {
+        const errText = await confirmationRes.text();
+        console.error("Erreur Resend (email de confirmation au contact):", confirmationRes.status, errText);
+      }
+    } catch (confirmationErr) {
+      console.error("Erreur lors de l'envoi de l'email de confirmation:", confirmationErr);
     }
 
     return res.status(200).json({ ok: true });
