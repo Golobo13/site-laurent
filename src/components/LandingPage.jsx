@@ -1313,7 +1313,7 @@ export default function LandingPage() {
 
               {status === "success" && (
                 <p className="success-pulse-strong rounded-xl border border-purple-700/40 bg-purple-700/10 p-3 font-medium text-purple-100">
-                  Merci ! Votre message a bien été envoyé. Notre équipe reviendra vers vous très prochainement.
+                  Merci ! Votre message a bien été reçu. Notre équipe reviendra vers vous très prochainement.
                 </p>
               )}
               {status === "error" && (
