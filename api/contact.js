@@ -24,14 +24,14 @@ export default async function handler(req, res) {
 
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
-    const { name, email, phone, sector, message, consent, website } = body;
+    const { firstName, lastName, gender, email, phone, companyName, city, sector, message, consent, website } = body;
 
     // Honeypot anti-spam : ce champ est invisible pour un humain, seuls les bots le remplissent.
     if (website) {
       return res.status(200).json({ ok: true });
     }
 
-    if (!name || !email || !message || !consent) {
+    if (!firstName || !lastName || !email || !message || !consent) {
       return res.status(400).json({ error: "Champs requis manquants." });
     }
 
@@ -39,6 +39,9 @@ export default async function handler(req, res) {
     if (!emailOk) {
       return res.status(400).json({ error: "Adresse email invalide." });
     }
+
+    const name = `${firstName} ${lastName}`.trim();
+    const genderLabel = { homme: "Homme", femme: "Femme", autre: "Autre / Ne se prononce pas" }[gender] || "—";
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
@@ -52,8 +55,11 @@ export default async function handler(req, res) {
     const html = `
       <h2>Nouveau message depuis le site LG Conseil</h2>
       <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
+      <p><strong>Genre :</strong> ${escapeHtml(genderLabel)}</p>
       <p><strong>Email :</strong> ${escapeHtml(email)}</p>
       <p><strong>Téléphone :</strong> ${escapeHtml(phone) || "—"}</p>
+      <p><strong>Raison sociale :</strong> ${escapeHtml(companyName) || "—"}</p>
+      <p><strong>Ville :</strong> ${escapeHtml(city) || "—"}</p>
       <p><strong>Secteur d'activité :</strong> ${escapeHtml(sector) || "—"}</p>
       <p><strong>Message :</strong></p>
       <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>

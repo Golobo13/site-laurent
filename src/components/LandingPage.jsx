@@ -225,12 +225,12 @@ const Card = ({ children, className = "" }) => (
   </GlowingCard>
 );
 
-const Input = ({ label, type = "text", id, required, placeholder, value, onChange }) => (
+const Input = ({ label, type = "text", id, required, placeholder, value, onChange, onBlur, error }) => (
   <label className="block text-sm group">
     <span className="mb-2 block text-slate-200 font-medium">{label}</span>
     <div className="relative">
       <input
-        className="w-full rounded-xl border border-slate-600/70 bg-slate-900/60 px-4 py-3 text-slate-100 outline-none backdrop-blur-sm transition-all duration-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30 focus:bg-slate-900/80 hover:border-slate-500/80"
+        className={`w-full rounded-xl border ${error ? "border-red-500/70 focus:border-red-500" : "border-slate-600/70 focus:border-purple-500"} bg-slate-900/60 px-4 py-3 text-slate-100 outline-none backdrop-blur-sm transition-all duration-300 focus:ring-2 focus:ring-purple-500/30 focus:bg-slate-900/80 hover:border-slate-500/80`}
         type={type}
         id={id}
         placeholder={placeholder}
@@ -238,7 +238,33 @@ const Input = ({ label, type = "text", id, required, placeholder, value, onChang
         required={required}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
+        aria-invalid={error ? "true" : undefined}
       />
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+    </div>
+    {error && <span className="mt-1.5 block text-xs text-red-400">{error}</span>}
+  </label>
+);
+
+const Select = ({ label, id, required, value, onChange, options, placeholder }) => (
+  <label className="block text-sm group">
+    <span className="mb-2 block text-slate-200 font-medium">{label}</span>
+    <div className="relative">
+      <select
+        className="w-full appearance-none rounded-xl border border-slate-600/70 bg-slate-900/60 px-4 py-3 pr-10 text-slate-100 outline-none backdrop-blur-sm transition-all duration-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30 focus:bg-slate-900/80 hover:border-slate-500/80"
+        id={id}
+        aria-label={label}
+        required={required}
+        value={value}
+        onChange={onChange}
+      >
+        {placeholder && <option value="">{placeholder}</option>}
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>{opt.label}</option>
+        ))}
+      </select>
+      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
       <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
   </label>
@@ -454,8 +480,21 @@ const RdvNoticeModal = ({ open, onClose }) => {
 };
 
 export default function LandingPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", sector: "", message: "", consent: false, website: "" });
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    gender: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    city: "",
+    sector: "",
+    message: "",
+    consent: false,
+    website: "",
+  });
   const [status, setStatus] = useState("idle");
+  const [emailError, setEmailError] = useState("");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rdvNoticeOpen, setRdvNoticeOpen] = useState(false);
@@ -495,8 +534,24 @@ export default function LandingPage() {
     []
   );
 
+  const isEmailValid = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const validateEmailField = () => {
+    if (!form.email) {
+      setEmailError("");
+      return true;
+    }
+    const ok = isEmailValid(form.email);
+    setEmailError(ok ? "" : "Adresse email invalide (ex : vous@domaine.fr).");
+    return ok;
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!isEmailValid(form.email)) {
+      setEmailError("Adresse email invalide (ex : vous@domaine.fr).");
+      return;
+    }
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -506,7 +561,20 @@ export default function LandingPage() {
       });
       if (!res.ok) throw new Error("Erreur serveur");
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", sector: "", message: "", consent: false, website: "" });
+      setForm({
+        firstName: "",
+        lastName: "",
+        gender: "",
+        email: "",
+        phone: "",
+        companyName: "",
+        city: "",
+        sector: "",
+        message: "",
+        consent: false,
+        website: "",
+      });
+      setEmailError("");
     } catch (e) {
       setStatus("error");
     }
@@ -1043,7 +1111,7 @@ export default function LandingPage() {
 
       {/* --- Contact --- */}
       <Section id="contact" kicker="Discutons de vos besoins" showCta={false}>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="mx-auto max-w-2xl">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
               {/* Honeypot anti-spam : champ invisible, seuls les robots le remplissent */}
@@ -1057,13 +1125,33 @@ export default function LandingPage() {
                 aria-hidden="true"
                 className="absolute left-[-9999px] h-0 w-0 opacity-0"
               />
-              <Input
-                label="Nom"
-                required
-                placeholder="Prénom Nom"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
+              <div className="grid gap-4 md:grid-cols-3">
+                <Input
+                  label="Prénom"
+                  required
+                  placeholder="Prénom"
+                  value={form.firstName}
+                  onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                />
+                <Input
+                  label="Nom"
+                  required
+                  placeholder="Nom"
+                  value={form.lastName}
+                  onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                />
+                <Select
+                  label="Genre"
+                  placeholder="Sélectionner…"
+                  value={form.gender}
+                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
+                  options={[
+                    { value: "homme", label: "Homme" },
+                    { value: "femme", label: "Femme" },
+                    { value: "autre", label: "Autre / Ne se prononce pas" },
+                  ]}
+                />
+              </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Email"
@@ -1071,7 +1159,12 @@ export default function LandingPage() {
                   required
                   placeholder="vous@domaine.fr"
                   value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, email: e.target.value });
+                    if (emailError) setEmailError("");
+                  }}
+                  onBlur={validateEmailField}
+                  error={emailError}
                 />
                 <Input
                   label="Téléphone"
@@ -1079,6 +1172,20 @@ export default function LandingPage() {
                   placeholder="06 12 34 56 78"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Input
+                  label="Raison sociale"
+                  placeholder="Nom de votre entreprise"
+                  value={form.companyName}
+                  onChange={(e) => setForm({ ...form, companyName: e.target.value })}
+                />
+                <Input
+                  label="Ville"
+                  placeholder="Ex : Marseille"
+                  value={form.city}
+                  onChange={(e) => setForm({ ...form, city: e.target.value })}
                 />
               </div>
               <Input
@@ -1126,25 +1233,9 @@ export default function LandingPage() {
               )}
             </form>
           </Card>
-
-          <div className="space-y-4">
-            <Card>
-              <h3 className="text-lg font-semibold text-white">Ils me font confiance</h3>
-              <p className="mt-3 text-slate-300 leading-relaxed">
-                Architectes d'intérieur, dirigeants de coopératives, TPE/PME… Retrouvez l'ensemble des témoignages dans la{" "}
-                <a href="#temoignages" className="text-purple-300 hover:underline">section témoignages</a>.
-              </p>
-              <div className="mt-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                ))}
-                <span className="ml-2 text-sm text-slate-400">Satisfaction client</span>
-              </div>
-            </Card>
-          </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
