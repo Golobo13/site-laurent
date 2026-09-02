@@ -481,9 +481,10 @@ const RdvNoticeModal = ({ open, onClose }) => {
 
 export default function LandingPage() {
   const [form, setForm] = useState({
+    civility: "",
+    civilityOther: "",
     firstName: "",
     lastName: "",
-    gender: "",
     email: "",
     phone: "",
     companyName: "",
@@ -562,9 +563,10 @@ export default function LandingPage() {
       if (!res.ok) throw new Error("Erreur serveur");
       setStatus("success");
       setForm({
+        civility: "",
+        civilityOther: "",
         firstName: "",
         lastName: "",
-        gender: "",
         email: "",
         phone: "",
         companyName: "",
@@ -1126,38 +1128,42 @@ export default function LandingPage() {
                 className="absolute left-[-9999px] h-0 w-0 opacity-0"
               />
               <div className="grid gap-4 md:grid-cols-3">
+                <Select
+                  label="Civilité"
+                  placeholder="Sélectionner…"
+                  value={form.civility}
+                  onChange={(e) => setForm({ ...form, civility: e.target.value })}
+                  options={[
+                    { value: "madame", label: "Madame" },
+                    { value: "monsieur", label: "Monsieur" },
+                    { value: "libre", label: "Autre (saisie libre)" },
+                  ]}
+                />
                 <Input
                   label="Prénom"
                   required
-                  placeholder="Prénom"
                   value={form.firstName}
                   onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                 />
                 <Input
                   label="Nom"
                   required
-                  placeholder="Nom"
                   value={form.lastName}
                   onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                 />
-                <Select
-                  label="Genre"
-                  placeholder="Sélectionner…"
-                  value={form.gender}
-                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
-                  options={[
-                    { value: "homme", label: "Homme" },
-                    { value: "femme", label: "Femme" },
-                    { value: "autre", label: "Autre / Ne se prononce pas" },
-                  ]}
-                />
               </div>
+              {form.civility === "libre" && (
+                <Input
+                  label="Précisez votre civilité"
+                  value={form.civilityOther}
+                  onChange={(e) => setForm({ ...form, civilityOther: e.target.value })}
+                />
+              )}
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Email"
                   type="email"
                   required
-                  placeholder="vous@domaine.fr"
                   value={form.email}
                   onChange={(e) => {
                     setForm({ ...form, email: e.target.value });
@@ -1169,7 +1175,6 @@ export default function LandingPage() {
                 <Input
                   label="Téléphone"
                   type="tel"
-                  placeholder="06 12 34 56 78"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 />
@@ -1177,13 +1182,11 @@ export default function LandingPage() {
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Raison sociale"
-                  placeholder="Nom de votre entreprise"
                   value={form.companyName}
                   onChange={(e) => setForm({ ...form, companyName: e.target.value })}
                 />
                 <Input
                   label="Ville"
-                  placeholder="Ex : Marseille"
                   value={form.city}
                   onChange={(e) => setForm({ ...form, city: e.target.value })}
                 />
