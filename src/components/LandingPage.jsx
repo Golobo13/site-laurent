@@ -21,6 +21,7 @@ import {
   Linkedin,
   Home,
   MessagesSquare,
+  Construction,
 } from "lucide-react";
 
 // ⚙️ Remplace ces constantes par tes vraies infos
@@ -190,7 +191,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -403,11 +404,61 @@ const LogoLightbox = ({ image, onClose }) => {
   );
 };
 
+const RdvNoticeModal = ({ open, onClose }) => {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-6"
+      onClick={onClose}
+    >
+      <div className="relative w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="absolute -top-4 -right-4 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 p-8 text-center shadow-2xl">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-purple-500/15 text-purple-300">
+            <Construction className="h-7 w-7" />
+          </div>
+          <h3 className="mt-4 text-lg font-semibold text-white">Prise de rendez-vous en travaux</h3>
+          <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+            La réservation en ligne arrive très bientôt. En attendant, contactez-nous directement et nous
+            conviendrons d'un créneau ensemble.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white hover:bg-purple-500"
+          >
+            Discutons de vos besoins
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function LandingPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", sector: "", message: "", consent: false });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", sector: "", message: "", consent: false, website: "" });
   const [status, setStatus] = useState("idle");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [rdvNoticeOpen, setRdvNoticeOpen] = useState(false);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -415,6 +466,12 @@ export default function LandingPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const openNotice = () => setRdvNoticeOpen(true);
+    window.addEventListener("open-rdv-notice", openNotice);
+    return () => window.removeEventListener("open-rdv-notice", openNotice);
+  }, []);
 
   const faq = useMemo(
     () => [
@@ -442,12 +499,14 @@ export default function LandingPage() {
     e.preventDefault();
     setStatus("loading");
     try {
-      // 👉 Branchez ici votre API Node/Express (/api/contact) avec Nodemailer + hCaptcha/Turnstile
-      // const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
-      // if (!res.ok) throw new Error("Erreur serveur");
-      await new Promise((r) => setTimeout(r, 600)); // démo
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", sector: "", message: "", consent: false });
+      setForm({ name: "", email: "", phone: "", sector: "", message: "", consent: false, website: "" });
     } catch (e) {
       setStatus("error");
     }
@@ -577,7 +636,7 @@ export default function LandingPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
-                <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+                <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
                   <CalendarClock className="h-5 w-5" />
                   Prenons rendez‑vous
                 </PillButton>
@@ -881,14 +940,13 @@ export default function LandingPage() {
                 <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-purple-400" /> Confirmation immédiate par email</li>
               </ul>
             </div>
-            <a
-              href={SITE.calendlyUrl}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-4 text-base font-medium text-white hover:bg-purple-500"
             >
               <CalendarClock className="h-5 w-5" /> Réserver mon créneau
-            </a>
+            </button>
           </div>
         </Card>
 
@@ -967,7 +1025,7 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -988,6 +1046,17 @@ export default function LandingPage() {
         <div className="grid gap-8 md:grid-cols-2">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
+              {/* Honeypot anti-spam : champ invisible, seuls les robots le remplissent */}
+              <input
+                type="text"
+                name="website"
+                value={form.website}
+                onChange={(e) => setForm({ ...form, website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
               <Input
                 label="Nom"
                 required
@@ -1038,8 +1107,6 @@ export default function LandingPage() {
                 </span>
               </label>
 
-              <div className="mt-2 text-xs text-slate-400">Protection anti‑spam proposée : Cloudflare Turnstile / hCaptcha (à brancher).</div>
-
               <button
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 font-medium text-white hover:bg-purple-500 disabled:opacity-60"
                 disabled={status === "loading"}
@@ -1078,7 +1145,7 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -1211,6 +1278,8 @@ export default function LandingPage() {
       </div>
 
       <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
+
+      <RdvNoticeModal open={rdvNoticeOpen} onClose={() => setRdvNoticeOpen(false)} />
 
       {/* --- JSON‑LD minimal pour le SEO local --- */}
       <script
