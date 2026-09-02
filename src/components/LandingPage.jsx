@@ -1312,8 +1312,8 @@ export default function LandingPage() {
               </button>
 
               {status === "success" && (
-                <p className="rounded-xl border border-purple-700/40 bg-purple-700/10 p-3 text-purple-200">
-                  Merci ! Votre message a bien été envoyé. Je vous réponds rapidement.
+                <p className="animate-pulse-glow rounded-xl border border-purple-700/40 bg-purple-700/10 p-3 text-purple-200">
+                  Merci ! Votre message a bien été envoyé. Notre équipe reviendra vers vous très prochainement.
                 </p>
               )}
               {status === "error" && (
