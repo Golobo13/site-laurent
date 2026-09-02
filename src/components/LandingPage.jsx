@@ -314,7 +314,7 @@ const CookieBar = () => {
         <Shield className="mt-1 h-5 w-5" />
         <p>
           Nous utilisons des cookies strictement nécessaires et, avec votre accord, des mesures d'audience.
-          <a href="#mentions" className="ml-2 underline">En savoir plus</a>.
+          <a href="/confidentialite" className="ml-2 underline">En savoir plus</a>.
         </p>
       </div>
       <div className="mt-3 flex justify-end gap-2">
@@ -1073,7 +1073,7 @@ export default function LandingPage() {
                   className="mt-1"
                 />
                 <span>
-                  J'accepte que mes données soient utilisées pour me recontacter (RGPD). Voir <a className="underline" href="#mentions">mentions légales</a>.
+                  J'accepte que mes données soient utilisées pour me recontacter (RGPD). Voir <a className="underline" href="/mentions-legales">mentions légales</a>.
                 </span>
               </label>
 
@@ -1234,7 +1234,11 @@ export default function LandingPage() {
                 © {new Date().getFullYear()} {SITE.brand}. Tous droits réservés — Marseille.
               </p>
               <p className="mt-2 text-xs text-slate-500">
-                Mentions légales · Politique de confidentialité · RGPD (bannières cookies, finalités, durée et droits d'accès).
+                <a href="/mentions-legales" className="hover:text-slate-300 hover:underline">Mentions légales</a>
+                {" · "}
+                <a href="/confidentialite" className="hover:text-slate-300 hover:underline">Politique de confidentialité</a>
+                {" · "}
+                <a href="/confidentialite" className="hover:text-slate-300 hover:underline">RGPD</a> (bannières cookies, finalités, durée et droits d'accès).
               </p>
             </div>
             <div className="text-sm text-slate-400">
