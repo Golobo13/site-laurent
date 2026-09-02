@@ -479,11 +479,11 @@ const RdvNoticeModal = ({ open, onClose }) => {
             type="button"
             onClick={() => {
               onClose();
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("coordonnees")?.scrollIntoView({ behavior: "smooth" });
             }}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white hover:bg-purple-500"
           >
-            Discutons de vos besoins
+            Contact
           </button>
         </div>
       </div>
@@ -1281,7 +1281,6 @@ export default function LandingPage() {
               </div>
               <Input
                 label="Secteur d'activité"
-                placeholder="Ex : restauration, BTP, services…"
                 value={form.sector}
                 onChange={(e) => setForm({ ...form, sector: e.target.value })}
               />
