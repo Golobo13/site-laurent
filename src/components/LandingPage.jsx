@@ -87,7 +87,7 @@ const FloatingOrbs = () => (
 );
 
 const AnimatedGrid = () => (
-  <div className="absolute inset-0 opacity-30">
+  <div className="absolute inset-0 opacity-30 pointer-events-none">
     <div className="absolute inset-0" style={{
       backgroundImage: `
         linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
@@ -570,7 +570,7 @@ export default function LandingPage() {
 
       {/* --- Hero --- */}
       <section id="accueil" className="relative overflow-hidden pt-[4px] pb-20 md:pt-[52px] md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
         
         <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10 relative">
           <div className="grid min-w-0 items-start gap-12 md:grid-cols-2 xl:grid-cols-[1fr_600px]">
