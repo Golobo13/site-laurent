@@ -67,6 +67,11 @@ export default async function handler(req, res) {
 
     const to = process.env.CONTACT_TO_EMAIL || "l.garnero@expertgcl.fr";
     const from = process.env.CONTACT_FROM_EMAIL || "LG Conseil <onboarding@resend.dev>";
+    // Adresse de réponse pour les emails envoyés AU visiteur : l'adresse
+    // d'expédition (from) n'a pas de vraie boîte mail derrière elle (elle
+    // sert uniquement à envoyer via Resend), donc si le visiteur répond, on
+    // veut que ça arrive sur une boîte réellement suivie.
+    const replyToVisitor = process.env.CONTACT_REPLY_TO_EMAIL || "lgconseileu@gmail.com";
 
     const recap = `
       <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
@@ -128,6 +133,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from,
           to: [email],
+          reply_to: replyToVisitor,
           subject: "Nous avons bien reçu votre message — LG Conseil",
           html: confirmationHtml,
         }),
