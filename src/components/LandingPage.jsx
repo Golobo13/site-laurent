@@ -205,8 +205,11 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             className="w-full max-w-[300px] justify-center"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
-            <MessagesSquare className="h-4 w-4" />
-            Discutons de vos besoins
+            <MessagesSquare className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Parlez-nous de vous,<br />
+              on vous recontacte vite
+            </span>
           </PillButton>
         </div>
       )}
@@ -746,8 +749,11 @@ export default function LandingPage() {
                   className="w-full max-w-[300px] justify-center"
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 >
-                  <MessagesSquare className="h-5 w-5" />
-                  Discutons de vos besoins
+                  <MessagesSquare className="h-5 w-5 flex-shrink-0" />
+                  <span className="text-left leading-tight">
+                    Parlez-nous de vous,<br />
+                    on vous recontacte vite
+                  </span>
                 </PillButton>
               </div>
             </div>
@@ -1057,8 +1063,11 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-            <MessagesSquare className="h-4 w-4" />
-            Discutons de vos besoins
+            <MessagesSquare className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Parlez-nous de vous,<br />
+              on vous recontacte vite
+            </span>
           </PillButton>
         </div>
       </Section>
@@ -1144,8 +1153,11 @@ export default function LandingPage() {
             className="w-full max-w-[300px] justify-center"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
-            <MessagesSquare className="h-4 w-4" />
-            Discutons de vos besoins
+            <MessagesSquare className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Parlez-nous de vous,<br />
+              on vous recontacte vite
+            </span>
           </PillButton>
         </div>
       </Section>
