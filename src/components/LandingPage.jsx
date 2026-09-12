@@ -196,7 +196,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
@@ -206,7 +206,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -739,7 +739,7 @@ export default function LandingPage() {
                   onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <CalendarClock className="h-5 w-5 flex-shrink-0" />
-                  <span className="text-justify leading-tight">
+                  <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
                     Réservez un appel<br />
                     découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
                   </span>
@@ -750,7 +750,7 @@ export default function LandingPage() {
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <MessagesSquare className="h-5 w-5 flex-shrink-0" />
-                  <span className="text-justify leading-tight">
+                  <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
                     Parlez-nous de vous,<br />
                     on vous recontacte <span className="animate-pulse text-red-500">vite</span>
                   </span>
@@ -1064,7 +1064,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -1144,7 +1144,7 @@ export default function LandingPage() {
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
@@ -1154,7 +1154,7 @@ export default function LandingPage() {
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -1311,7 +1311,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
+            <span className="flex-1 text-justify [text-align-last:justify] leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
