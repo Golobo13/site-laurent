@@ -190,15 +190,21 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       )}
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
-        <div className="mt-10 flex flex-col items-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+        <div className="mt-10 flex flex-col items-stretch gap-4">
+          <PillButton
+            className="w-full max-w-[300px] justify-center"
+            onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
+          >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Réservez un appel<br />
-              découverte <span className="animate-pulse">gratuit</span>
+              découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
           </PillButton>
-          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+          <PillButton
+            className="w-full max-w-[300px] justify-center"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+          >
             <MessagesSquare className="h-4 w-4" />
             Discutons de vos besoins
           </PillButton>
@@ -724,16 +730,22 @@ export default function LandingPage() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-col items-start gap-4">
-                <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+              <div className="mt-8 flex flex-col items-stretch gap-4">
+                <PillButton
+                  className="w-full max-w-[300px] justify-center"
+                  onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
+                >
                   <CalendarClock className="h-5 w-5 flex-shrink-0" />
                   <span className="text-left leading-tight">
                     Réservez un appel<br />
-                    découverte <span className="animate-pulse">gratuit</span>
+                    découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
                   </span>
                 </PillButton>
 
-                <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+                <PillButton
+                  className="w-full max-w-[300px] justify-center"
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                >
                   <MessagesSquare className="h-5 w-5" />
                   Discutons de vos besoins
                 </PillButton>
@@ -1117,15 +1129,21 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
+        <div className="mt-10 flex flex-col items-stretch gap-4">
+          <PillButton
+            className="w-full max-w-[300px] justify-center"
+            onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
+          >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Réservez un appel<br />
-              découverte <span className="animate-pulse">gratuit</span>
+              découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
           </PillButton>
-          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+          <PillButton
+            className="w-full max-w-[300px] justify-center"
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+          >
             <MessagesSquare className="h-4 w-4" />
             Discutons de vos besoins
           </PillButton>
@@ -1283,7 +1301,7 @@ export default function LandingPage() {
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Réservez un appel<br />
-              découverte <span className="animate-pulse">gratuit</span>
+              découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
           </PillButton>
         </div>
