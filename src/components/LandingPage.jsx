@@ -994,7 +994,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Ressources --- */}
-      <Section id="ressources" kicker="Téléchargez nos guides pratiques" title="Téléchargez nos guides pratiques">
+      <Section id="ressources" kicker="Téléchargez nos guides pratiques">
         <p className="mb-8 max-w-3xl text-slate-300">
           Quatre guides courts et opérationnels pour faire un premier état des lieux de votre projet ou de votre entreprise.
           <span className="text-purple-300"> Sans inscription.</span>
