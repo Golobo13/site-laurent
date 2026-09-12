@@ -21,7 +21,6 @@ import {
   Linkedin,
   Home,
   MessagesSquare,
-  Construction,
   AlertTriangle,
 } from "lucide-react";
 
@@ -192,7 +191,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -442,55 +441,6 @@ const LogoLightbox = ({ image, onClose }) => {
   );
 };
 
-const RdvNoticeModal = ({ open, onClose }) => {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-6"
-      onClick={onClose}
-    >
-      <div className="relative w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Fermer"
-          className="absolute -top-4 -right-4 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 p-8 text-center shadow-2xl">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-purple-500/15 text-purple-300">
-            <Construction className="h-7 w-7" />
-          </div>
-          <h3 className="mt-4 text-lg font-semibold text-white">Prise de rendez-vous en travaux</h3>
-          <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-            La réservation en ligne arrive très bientôt. En attendant, contactez-nous directement et nous
-            conviendrons d'un créneau ensemble.
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              onClose();
-              document.getElementById("coordonnees")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white hover:bg-purple-500"
-          >
-            Contact
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const RequiredFieldsModal = ({ open, onClose }) => {
   useEffect(() => {
     if (!open) return;
@@ -556,7 +506,6 @@ export default function LandingPage() {
   const [requiredPopupOpen, setRequiredPopupOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [rdvNoticeOpen, setRdvNoticeOpen] = useState(false);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -564,12 +513,6 @@ export default function LandingPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    const openNotice = () => setRdvNoticeOpen(true);
-    window.addEventListener("open-rdv-notice", openNotice);
-    return () => window.removeEventListener("open-rdv-notice", openNotice);
-  }, []);
 
   const faq = useMemo(
     () => [
@@ -779,7 +722,7 @@ export default function LandingPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
-                <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
+                <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
                   <CalendarClock className="h-5 w-5" />
                   Prenons rendez‑vous
                 </PillButton>
@@ -1083,13 +1026,14 @@ export default function LandingPage() {
                 <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-purple-400" /> Confirmation immédiate par email</li>
               </ul>
             </div>
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}
+            <a
+              href={SITE.calendlyUrl}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-4 text-base font-medium text-white hover:bg-purple-500"
             >
               <CalendarClock className="h-5 w-5" /> Réserver mon créneau
-            </button>
+            </a>
           </div>
         </Card>
 
@@ -1168,7 +1112,7 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -1326,7 +1270,7 @@ export default function LandingPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <PillButton onClick={() => window.dispatchEvent(new CustomEvent('open-rdv-notice'))}>
+          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4" />
             Prenons rendez‑vous
           </PillButton>
@@ -1459,8 +1403,6 @@ export default function LandingPage() {
       </div>
 
       <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
-
-      <RdvNoticeModal open={rdvNoticeOpen} onClose={() => setRdvNoticeOpen(false)} />
 
       <RequiredFieldsModal open={requiredPopupOpen} onClose={() => setRequiredPopupOpen(false)} />
 
