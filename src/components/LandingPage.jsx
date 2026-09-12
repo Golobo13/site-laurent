@@ -355,8 +355,8 @@ const Accordion = ({ items }) => {
 const RESOURCES = [
   {
     slug: "20-points-controle-creation",
-    title: "20 points de contrôle avant de créer sa société",
-    description: "Le guide indispensable pour préparer votre projet et sécuriser le lancement.",
+    title: "Vous allez créer votre entreprise",
+    description: "20 points de contrôle pour préparer votre projet et sécuriser le lancement.",
     file: "/ressources/20-points-de-controle-avant-de-creer-sa-societe.pdf",
     icon: FileText,
     tag: "Création",
