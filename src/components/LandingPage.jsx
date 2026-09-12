@@ -1308,7 +1308,7 @@ export default function LandingPage() {
           </Card>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
             <span className="text-justify leading-tight">
