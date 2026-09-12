@@ -192,7 +192,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       {showCta && (
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[300px] justify-center"
+            className="w-full max-w-[300px] justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
@@ -202,13 +202,13 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[300px] justify-center"
+            className="w-full max-w-[300px] justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte vite
+              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
           </PillButton>
         </div>
@@ -735,7 +735,7 @@ export default function LandingPage() {
 
               <div className="mt-8 flex flex-col items-stretch gap-4">
                 <PillButton
-                  className="w-full max-w-[300px] justify-center"
+                  className="w-full max-w-[300px] justify-start"
                   onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <CalendarClock className="h-5 w-5 flex-shrink-0" />
@@ -746,13 +746,13 @@ export default function LandingPage() {
                 </PillButton>
 
                 <PillButton
-                  className="w-full max-w-[300px] justify-center"
+                  className="w-full max-w-[300px] justify-start"
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <MessagesSquare className="h-5 w-5 flex-shrink-0" />
                   <span className="text-left leading-tight">
                     Parlez-nous de vous,<br />
-                    on vous recontacte vite
+                    on vous recontacte <span className="animate-pulse text-red-500">vite</span>
                   </span>
                 </PillButton>
               </div>
@@ -1066,7 +1066,7 @@ export default function LandingPage() {
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte vite
+              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
           </PillButton>
         </div>
@@ -1140,7 +1140,7 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[300px] justify-center"
+            className="w-full max-w-[300px] justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
@@ -1150,13 +1150,13 @@ export default function LandingPage() {
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[300px] justify-center"
+            className="w-full max-w-[300px] justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-left leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte vite
+              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
           </PillButton>
         </div>
