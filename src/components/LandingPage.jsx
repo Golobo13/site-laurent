@@ -192,7 +192,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       {showCta && (
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[240px] justify-start"
+            className="self-start justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
@@ -735,7 +735,7 @@ export default function LandingPage() {
 
               <div className="mt-8 flex flex-col items-stretch gap-4">
                 <PillButton
-                  className="w-full max-w-[240px] justify-start"
+                  className="self-start justify-start"
                   onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <CalendarClock className="h-5 w-5 flex-shrink-0" />
@@ -1140,7 +1140,7 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[240px] justify-start"
+            className="self-start justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
