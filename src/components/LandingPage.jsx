@@ -192,21 +192,21 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       {showCta && (
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[300px] justify-start"
+            className="w-full max-w-[240px] justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[300px] justify-start"
+            className="w-full max-w-[240px] justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -735,22 +735,22 @@ export default function LandingPage() {
 
               <div className="mt-8 flex flex-col items-stretch gap-4">
                 <PillButton
-                  className="w-full max-w-[300px] justify-start"
+                  className="w-full max-w-[240px] justify-start"
                   onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <CalendarClock className="h-5 w-5 flex-shrink-0" />
-                  <span className="text-left leading-tight">
+                  <span className="text-justify leading-tight">
                     Réservez un appel<br />
                     découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
                   </span>
                 </PillButton>
 
                 <PillButton
-                  className="w-full max-w-[300px] justify-start"
+                  className="w-full max-w-[240px] justify-start"
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <MessagesSquare className="h-5 w-5 flex-shrink-0" />
-                  <span className="text-left leading-tight">
+                  <span className="text-justify leading-tight">
                     Parlez-nous de vous,<br />
                     on vous recontacte <span className="animate-pulse text-red-500">vite</span>
                   </span>
@@ -1064,7 +1064,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -1140,21 +1140,21 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-col items-stretch gap-4">
           <PillButton
-            className="w-full max-w-[300px] justify-start"
+            className="w-full max-w-[240px] justify-start"
             onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}
           >
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[300px] justify-start"
+            className="w-full max-w-[240px] justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
               on vous recontacte <span className="animate-pulse text-red-500">vite</span>
             </span>
@@ -1311,7 +1311,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
             <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-left leading-tight">
+            <span className="text-justify leading-tight">
               Réservez un appel<br />
               découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
             </span>
