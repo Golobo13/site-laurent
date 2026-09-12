@@ -354,6 +354,7 @@ const Accordion = ({ items }) => {
 
 const RESOURCES = [
   {
+    slug: "20-points-controle-creation",
     title: "20 points de contrôle avant de créer sa société",
     description: "Le guide indispensable pour préparer votre projet et sécuriser le lancement.",
     file: "/ressources/20-points-de-controle-avant-de-creer-sa-societe.pdf",
@@ -361,6 +362,7 @@ const RESOURCES = [
     tag: "Création",
   },
   {
+    slug: "rentabilite",
     title: "Votre entreprise est-elle aussi rentable qu'elle devrait l'être ?",
     description: "10 points de contrôle pour évaluer la rentabilité réelle de votre activité.",
     file: "/ressources/votre-entreprise-est-elle-rentable.pdf",
@@ -368,6 +370,7 @@ const RESOURCES = [
     tag: "Pilotage",
   },
   {
+    slug: "difficulte",
     title: "Entreprise en difficulté : les signaux à surveiller",
     description: "10 points de vigilance pour agir avant qu'il ne soit trop tard.",
     file: "/ressources/entreprise-en-difficulte.pdf",
@@ -375,6 +378,7 @@ const RESOURCES = [
     tag: "Redressement",
   },
   {
+    slug: "cession",
     title: "Êtes-vous prêt à vendre votre entreprise ?",
     description: "10 points de contrôle avant de céder votre activité dans les meilleures conditions.",
     file: "/ressources/cession-vente-entreprise.pdf",
@@ -498,6 +502,204 @@ const RequiredFieldsModal = ({ open, onClose }) => {
   );
 };
 
+const DownloadModal = ({
+  resource,
+  form,
+  setForm,
+  status,
+  fieldErrors,
+  setFieldErrors,
+  emailError,
+  setEmailError,
+  onSubmit,
+  onClose,
+}) => {
+  useEffect(() => {
+    if (!resource) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [resource, onClose]);
+
+  if (!resource) return null;
+
+  const Icon = resource.icon;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] overflow-y-auto bg-slate-950/80 p-6 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div className="relative mx-auto my-8 w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="absolute -top-4 -right-4 z-10 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 p-8 shadow-2xl">
+          <div className="mb-6 flex items-start gap-3">
+            <div className="flex-shrink-0 rounded-xl border border-purple-500/20 bg-gradient-to-br from-purple-600/30 to-blue-600/30 p-3 text-purple-300">
+              <Icon className="h-6 w-6" />
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-widest text-purple-400/90">Téléchargement gratuit</p>
+              <h3 className="mt-1 text-lg font-semibold leading-snug text-white">{resource.title}</h3>
+            </div>
+          </div>
+
+          {status === "success" ? (
+            <div className="py-2 text-center">
+              <p className="success-pulse-strong rounded-xl border border-purple-700/40 bg-purple-700/10 p-4 font-medium text-purple-100">
+                Merci ! Votre guide vient de partir par email{form.email ? ` à ${form.email}` : ""}. Pensez à vérifier vos spams si vous ne le voyez pas d'ici quelques minutes.
+              </p>
+              <button
+                type="button"
+                onClick={onClose}
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white hover:bg-purple-500"
+              >
+                Fermer
+              </button>
+            </div>
+          ) : (
+            <form className="space-y-4" onSubmit={onSubmit}>
+              {/* Honeypot anti-spam : champ invisible, seuls les robots le remplissent */}
+              <input
+                type="text"
+                name="website"
+                value={form.website}
+                onChange={(e) => setForm({ ...form, website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
+              <div className="grid gap-4 md:grid-cols-3">
+                <Select
+                  label="Civilité"
+                  placeholder="Sélectionner…"
+                  value={form.civility}
+                  onChange={(e) => setForm({ ...form, civility: e.target.value })}
+                  options={[
+                    { value: "madame", label: "Madame" },
+                    { value: "monsieur", label: "Monsieur" },
+                  ]}
+                />
+                <Input
+                  label="Prénom"
+                  required
+                  blink={fieldErrors.firstName}
+                  value={form.firstName}
+                  onChange={(e) => {
+                    setForm({ ...form, firstName: e.target.value });
+                    if (fieldErrors.firstName) setFieldErrors({ ...fieldErrors, firstName: false });
+                  }}
+                />
+                <Input
+                  label="Nom"
+                  required
+                  blink={fieldErrors.lastName}
+                  value={form.lastName}
+                  onChange={(e) => {
+                    setForm({ ...form, lastName: e.target.value });
+                    if (fieldErrors.lastName) setFieldErrors({ ...fieldErrors, lastName: false });
+                  }}
+                />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Input
+                  label="Email"
+                  type="email"
+                  required
+                  blink={fieldErrors.email}
+                  value={form.email}
+                  onChange={(e) => {
+                    setForm({ ...form, email: e.target.value });
+                    if (emailError) setEmailError("");
+                    if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: false });
+                  }}
+                  onBlur={() => {
+                    if (!form.email) {
+                      setEmailError("");
+                      return;
+                    }
+                    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+                    setEmailError(ok ? "" : "Adresse email invalide (ex : vous@domaine.fr).");
+                  }}
+                  error={emailError}
+                />
+                <Input
+                  label="Téléphone"
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  required
+                  blink={fieldErrors.phone}
+                  value={form.phone}
+                  onChange={(e) => {
+                    const digitsOnly = e.target.value.replace(/\D/g, "");
+                    setForm({ ...form, phone: digitsOnly });
+                    if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: false });
+                  }}
+                />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Input
+                  label="Raison sociale"
+                  required
+                  blink={fieldErrors.companyName}
+                  value={form.companyName}
+                  onChange={(e) => {
+                    setForm({ ...form, companyName: e.target.value });
+                    if (fieldErrors.companyName) setFieldErrors({ ...fieldErrors, companyName: false });
+                  }}
+                />
+                <Input
+                  label="Ville"
+                  value={form.city}
+                  onChange={(e) => setForm({ ...form, city: e.target.value })}
+                />
+              </div>
+              <Input
+                label="Secteur d'activité"
+                value={form.sector}
+                onChange={(e) => setForm({ ...form, sector: e.target.value })}
+              />
+              <label className="flex items-start gap-3 text-sm text-slate-300">
+                <input
+                  type="checkbox"
+                  checked={form.consent}
+                  onChange={(e) => setForm({ ...form, consent: e.target.checked })}
+                  required
+                  className="mt-1"
+                />
+                <span>
+                  J'accepte que mes données soient utilisées pour me recontacter (RGPD). Voir <a className="underline" href="/mentions-legales">mentions légales</a>.
+                </span>
+              </label>
+
+              <button
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-5 py-3 font-medium text-white hover:bg-purple-500 disabled:opacity-60"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Envoi…" : "Recevoir le guide par email"}
+              </button>
+
+              {status === "error" && (
+                <p className="rounded-xl border border-red-700/40 bg-red-700/10 p-3 text-red-200">
+                  Oups, une erreur est survenue. Réessayez plus tard ou contactez‑nous par téléphone.
+                </p>
+              )}
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function LandingPage() {
   const [form, setForm] = useState({
     civility: "",
@@ -518,6 +720,81 @@ export default function LandingPage() {
   const [requiredPopupOpen, setRequiredPopupOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // --- Téléchargement de guide (formulaire dans une pop-up, PDF envoyé par email) ---
+  const [downloadResource, setDownloadResource] = useState(null);
+  const [dlForm, setDlForm] = useState({
+    civility: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    city: "",
+    sector: "",
+    consent: false,
+    website: "",
+  });
+  const [dlStatus, setDlStatus] = useState("idle");
+  const [dlEmailError, setDlEmailError] = useState("");
+  const [dlFieldErrors, setDlFieldErrors] = useState({});
+  const [dlRequiredPopupOpen, setDlRequiredPopupOpen] = useState(false);
+
+  const closeDownloadModal = () => {
+    setDownloadResource(null);
+    setDlStatus("idle");
+    setDlForm({
+      civility: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      companyName: "",
+      city: "",
+      sector: "",
+      consent: false,
+      website: "",
+    });
+    setDlEmailError("");
+    setDlFieldErrors({});
+  };
+
+  const DL_REQUIRED_FIELDS = ["firstName", "lastName", "email", "phone", "companyName"];
+
+  const onDownloadSubmit = async (e) => {
+    e.preventDefault();
+    if (!downloadResource) return;
+
+    const missing = {};
+    DL_REQUIRED_FIELDS.forEach((key) => {
+      if (!String(dlForm[key] || "").trim()) missing[key] = true;
+    });
+
+    if (Object.keys(missing).length > 0) {
+      setDlFieldErrors(missing);
+      setDlRequiredPopupOpen(true);
+      return;
+    }
+    setDlFieldErrors({});
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dlForm.email)) {
+      setDlEmailError("Adresse email invalide (ex : vous@domaine.fr).");
+      return;
+    }
+
+    setDlStatus("loading");
+    try {
+      const res = await fetch("/api/download-guide", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...dlForm, resourceId: downloadResource.slug }),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
+      setDlStatus("success");
+    } catch (err) {
+      setDlStatus("error");
+    }
+  };
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -1001,12 +1278,11 @@ export default function LandingPage() {
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           {RESOURCES.map((r, idx) => (
-            <a
+            <button
               key={idx}
-              href={r.file}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative block"
+              type="button"
+              onClick={() => setDownloadResource(r)}
+              className="group relative block w-full text-left"
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-6 shadow-2xl flex gap-4 group-hover:border-purple-500/40 transition-all duration-300">
@@ -1030,7 +1306,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </Section>
@@ -1447,6 +1723,21 @@ export default function LandingPage() {
       <LogoLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
 
       <RequiredFieldsModal open={requiredPopupOpen} onClose={() => setRequiredPopupOpen(false)} />
+
+      <DownloadModal
+        resource={downloadResource}
+        form={dlForm}
+        setForm={setDlForm}
+        status={dlStatus}
+        fieldErrors={dlFieldErrors}
+        setFieldErrors={setDlFieldErrors}
+        emailError={dlEmailError}
+        setEmailError={setDlEmailError}
+        onSubmit={onDownloadSubmit}
+        onClose={closeDownloadModal}
+      />
+
+      <RequiredFieldsModal open={dlRequiredPopupOpen} onClose={() => setDlRequiredPopupOpen(false)} />
 
       {/* --- JSON‑LD minimal pour le SEO local --- */}
       <script
