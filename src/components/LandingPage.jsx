@@ -202,7 +202,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[240px] justify-start"
+            className="self-start justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
@@ -746,7 +746,7 @@ export default function LandingPage() {
                 </PillButton>
 
                 <PillButton
-                  className="w-full max-w-[240px] justify-start"
+                  className="self-start justify-start"
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 >
                   <MessagesSquare className="h-5 w-5 flex-shrink-0" />
@@ -1150,7 +1150,7 @@ export default function LandingPage() {
             </span>
           </PillButton>
           <PillButton
-            className="w-full max-w-[240px] justify-start"
+            className="self-start justify-start"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
