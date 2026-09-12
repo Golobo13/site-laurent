@@ -1271,7 +1271,15 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Ressources --- */}
-      <Section id="ressources" kicker="Téléchargez nos guides pratiques gratuits">
+      <Section
+        id="ressources"
+        kicker={
+          <>
+            Téléchargez nos guides pratiques{" "}
+            <span className="animate-pulse text-[#e2583f]">gratuits</span>
+          </>
+        }
+      >
         <p className="mb-8 max-w-3xl text-slate-300">
           4 guides courts et opérationnels pour faire un premier état des lieux de votre projet ou de votre entreprise.
         </p>
