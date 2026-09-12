@@ -37,7 +37,7 @@ const SITE = {
 const NAV_ITEMS = [
   { href: "#missions", label: "Missions" },
   { href: "#pourquoi", label: "Pourquoi ?" },
-  { href: "#ressources", label: "Ressources" },
+  { href: "#ressources", label: "Guides pratiques" },
   { href: "#temoignages", label: "Témoignages" },
   { href: "#conseils", label: "Publications" },
   { href: "#faq", label: "Faq" },
