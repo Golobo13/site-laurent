@@ -190,10 +190,13 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
       )}
       <div className="mt-8 text-slate-300">{children}</div>
       {showCta && (
-        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+        <div className="mt-10 flex flex-col items-start gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
-            <CalendarClock className="h-4 w-4" />
-            Prenons rendez‑vous
+            <CalendarClock className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Réservez un appel<br />
+              découverte <span className="animate-pulse">gratuit</span>
+            </span>
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             <MessagesSquare className="h-4 w-4" />
@@ -721,10 +724,13 @@ export default function LandingPage() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
+              <div className="mt-8 flex flex-col items-start gap-4">
                 <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
-                  <CalendarClock className="h-5 w-5" />
-                  Prenons rendez‑vous
+                  <CalendarClock className="h-5 w-5 flex-shrink-0" />
+                  <span className="text-left leading-tight">
+                    Réservez un appel<br />
+                    découverte <span className="animate-pulse">gratuit</span>
+                  </span>
                 </PillButton>
 
                 <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
@@ -1111,10 +1117,13 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+        <div className="mt-10 flex flex-col items-start gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
-            <CalendarClock className="h-4 w-4" />
-            Prenons rendez‑vous
+            <CalendarClock className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Réservez un appel<br />
+              découverte <span className="animate-pulse">gratuit</span>
+            </span>
           </PillButton>
           <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
             <MessagesSquare className="h-4 w-4" />
@@ -1271,8 +1280,11 @@ export default function LandingPage() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
-            <CalendarClock className="h-4 w-4" />
-            Prenons rendez‑vous
+            <CalendarClock className="h-4 w-4 flex-shrink-0" />
+            <span className="text-left leading-tight">
+              Réservez un appel<br />
+              découverte <span className="animate-pulse">gratuit</span>
+            </span>
           </PillButton>
         </div>
       </Section>
