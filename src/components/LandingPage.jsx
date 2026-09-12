@@ -208,7 +208,7 @@ const Section = ({ id, title, kicker, children, showCta = true }) => (
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
+              on vous recontacte <span className="animate-pulse text-[#e2583f]">vite</span>
             </span>
           </PillButton>
         </div>
@@ -752,7 +752,7 @@ export default function LandingPage() {
                   <MessagesSquare className="h-5 w-5 flex-shrink-0" />
                   <span className="text-justify leading-tight">
                     Parlez-nous de vous,<br />
-                    on vous recontacte <span className="animate-pulse text-red-500">vite</span>
+                    on vous recontacte <span className="animate-pulse text-[#e2583f]">vite</span>
                   </span>
                 </PillButton>
               </div>
@@ -1066,7 +1066,7 @@ export default function LandingPage() {
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
+              on vous recontacte <span className="animate-pulse text-[#e2583f]">vite</span>
             </span>
           </PillButton>
         </div>
@@ -1156,7 +1156,7 @@ export default function LandingPage() {
             <MessagesSquare className="h-4 w-4 flex-shrink-0" />
             <span className="text-justify leading-tight">
               Parlez-nous de vous,<br />
-              on vous recontacte <span className="animate-pulse text-red-500">vite</span>
+              on vous recontacte <span className="animate-pulse text-[#e2583f]">vite</span>
             </span>
           </PillButton>
         </div>
