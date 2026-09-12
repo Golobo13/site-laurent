@@ -133,8 +133,6 @@ export default async function handler(req, res) {
       <p><strong>Secteur d'activité :</strong> ${escapeHtml(sector) || "—"}</p>
     `;
 
-    // 1) Email au visiteur, avec le PDF en pièce jointe — c'est le cœur de la
-    // fonctionnalité : si cet envoi échoue, on renvoie une erreur au front.
     const guideHtml = `
       <p>Bonjour ${escapeHtml(firstName)},</p>
       <p>Merci pour votre intérêt ! Vous trouverez votre guide <strong>${escapeHtml(resource.title)}</strong> en pièce jointe de cet email.</p>
@@ -142,37 +140,33 @@ export default async function handler(req, res) {
       <p>Cordialement,<br/>L'équipe LG Conseil</p>
     `;
 
-    const guideRes = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [email],
-        subject: `Votre guide : ${resource.title} — LG Conseil`,
-        html: guideHtml,
-        attachments: [{ filename: resource.file, content: base64 }],
+    const notifHtml = `
+      <h2>Téléchargement de guide — site LG Conseil</h2>
+      ${recap}
+    `;
+
+    // Les deux emails (guide au visiteur + notification interne) partent en
+    // parallèle plutôt que l'un après l'autre, pour réduire le temps total
+    // d'exécution de la fonction (une exécution trop longue sur un plan
+    // Vercel avec délai d'exécution limité pourrait sinon couper la fonction
+    // avant l'envoi de la notification interne, sans que le visiteur ni nous
+    // ne le sachions).
+    const [guideResult, notifResult] = await Promise.allSettled([
+      fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: [email],
+          subject: `Votre guide : ${resource.title} — LG Conseil`,
+          html: guideHtml,
+          attachments: [{ filename: resource.file, content: base64 }],
+        }),
       }),
-    });
-
-    if (!guideRes.ok) {
-      const errText = await guideRes.text();
-      console.error("Erreur Resend (envoi du guide):", guideRes.status, errText);
-      return res.status(502).json({ error: "Erreur lors de l'envoi de l'email." });
-    }
-
-    // 2) Notification interne (lead) : un échec ici ne doit pas faire échouer
-    // la soumission (le guide est déjà parti au visiteur) : on log l'erreur
-    // sans bloquer la réponse, comme pour le formulaire de contact.
-    try {
-      const notifHtml = `
-        <h2>Téléchargement de guide — site LG Conseil</h2>
-        ${recap}
-      `;
-
-      const notifRes = await fetch("https://api.resend.com/emails", {
+      fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -185,14 +179,31 @@ export default async function handler(req, res) {
           subject: `Téléchargement guide : ${resource.title} — ${name}`,
           html: notifHtml,
         }),
-      });
+      }),
+    ]);
 
-      if (!notifRes.ok) {
-        const errText = await notifRes.text();
-        console.error("Erreur Resend (notification interne de téléchargement):", notifRes.status, errText);
+    // 1) Email au visiteur, avec le PDF en pièce jointe — c'est le cœur de la
+    // fonctionnalité : si cet envoi échoue, on renvoie une erreur au front.
+    if (guideResult.status !== "fulfilled" || !guideResult.value.ok) {
+      if (guideResult.status === "fulfilled") {
+        const errText = await guideResult.value.text();
+        console.error("Erreur Resend (envoi du guide):", guideResult.value.status, errText);
+      } else {
+        console.error("Erreur réseau lors de l'envoi du guide:", guideResult.reason);
       }
-    } catch (notifErr) {
-      console.error("Erreur lors de l'envoi de la notification interne:", notifErr);
+      return res.status(502).json({ error: "Erreur lors de l'envoi de l'email." });
+    }
+
+    // 2) Notification interne (lead) : un échec ici ne doit pas faire échouer
+    // la soumission (le guide est déjà parti au visiteur) : on log l'erreur
+    // sans bloquer la réponse, comme pour le formulaire de contact.
+    if (notifResult.status !== "fulfilled" || !notifResult.value.ok) {
+      if (notifResult.status === "fulfilled") {
+        const errText = await notifResult.value.text();
+        console.error("Erreur Resend (notification interne de téléchargement):", notifResult.value.status, errText);
+      } else {
+        console.error("Erreur réseau lors de l'envoi de la notification interne:", notifResult.reason);
+      }
     }
 
     return res.status(200).json({ ok: true });
