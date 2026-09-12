@@ -1168,7 +1168,7 @@ export default function LandingPage() {
       </Section>
 
       {/* --- Contact --- */}
-      <Section id="contact" kicker="Discutons de vos besoins" showCta={false}>
+      <Section id="contact" kicker="Parlez-nous de vous, on vous recontacte vite" showCta={false}>
         <div className="mx-auto max-w-2xl">
           <Card>
             <form className="space-y-4" onSubmit={onSubmit}>
