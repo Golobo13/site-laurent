@@ -26,7 +26,7 @@ import {
 
 // ⚙️ Remplace ces constantes par tes vraies infos
 const SITE = {
-  brand: "GCL – Expert en gestion",
+  brand: "LG Conseil - Experts en gestion",
   city: "Marseille",
   calendlyUrl: "https://app.lemcal.com/@lg-conseil",
   phone: "+33 6 22 45 92 38",
@@ -1695,7 +1695,7 @@ export default function LandingPage() {
           <div className="grid gap-8 md:grid-cols-2">
             <div>
               <p className="text-sm text-slate-400">
-                © {new Date().getFullYear()} {SITE.brand}. Tous droits réservés — Marseille.
+                © {new Date().getFullYear()} {SITE.brand}. Tous droits réservés - Marseille.
               </p>
               <p className="mt-2 text-xs text-slate-500">
                 <a href="/mentions-legales" className="hover:text-slate-300 hover:underline">Mentions légales</a>
