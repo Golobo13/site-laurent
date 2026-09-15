@@ -1756,6 +1756,18 @@ export default function LandingPage() {
               "https://www.linkedin.com/in/laurent-garnero-13016",
               "https://www.linkedin.com/in/glbonnifay",
             ],
+            keywords: [
+              "expert gestion Marseille",
+              "conseil gestion entreprise Marseille",
+              "accompagnement création entreprise Marseille",
+              "pilotage entreprise Marseille",
+              "redressement entreprise Marseille",
+              "accompagnement dirigeant Marseille",
+              "gestion trésorerie entreprise Marseille",
+              "expert gestion PACA",
+              "conseil gestion entreprise Provence-Alpes-Côte d'Azur",
+              "accompagnement dirigeant région PACA",
+            ],
           }),
         }}
       />
