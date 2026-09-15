@@ -1746,10 +1746,13 @@ export default function LandingPage() {
               addressLocality: "Marseille",
               addressCountry: "FR",
             },
-            url: typeof window !== "undefined" ? window.location.href : "",
+            url: "https://lg-conseil.eu",
             email: SITE.email,
             telephone: SITE.phone,
-            sameAs: [],
+            sameAs: [
+              "https://www.linkedin.com/in/laurent-garnero-13016",
+              "https://www.linkedin.com/in/glbonnifay",
+            ],
           }),
         }}
       />
