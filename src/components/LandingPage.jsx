@@ -387,17 +387,6 @@ const RESOURCES = [
   },
 ];
 
-const LeadMagnet = () => (
-  <a
-    href={RESOURCES[0].file}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center gap-2 rounded-xl border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-purple-200 hover:bg-purple-500/20"
-  >
-    <FileText className="h-4 w-4" /> Télécharger la check‑list gratuite
-  </a>
-);
-
 const ServiceCard = ({ icon: Icon, title, bullets, delay = 0 }) => (
   <MagicCard className={`group hover:scale-105 transition-all duration-500 animate-fade-in-up`} style={{ animationDelay: `${delay}ms` }}>
     <div className="flex items-start gap-4">
@@ -1263,9 +1252,6 @@ export default function LandingPage() {
                 </li>
               ))}
             </ol>
-            <div className="mt-6">
-              <LeadMagnet />
-            </div>
           </Card>
         </div>
       </Section>
