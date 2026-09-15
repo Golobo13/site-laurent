@@ -1740,7 +1740,10 @@ export default function LandingPage() {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             name: `${SITE.brand}`,
-            areaServed: "Marseille",
+            areaServed: {
+              "@type": "AdministrativeArea",
+              name: "Provence-Alpes-Côte d'Azur",
+            },
             address: {
               "@type": "PostalAddress",
               addressLocality: "Marseille",
