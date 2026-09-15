@@ -1750,8 +1750,8 @@ export default function LandingPage() {
               addressCountry: "FR",
             },
             url: "https://lg-conseil.eu",
-            email: SITE.email,
-            telephone: SITE.phone,
+            email: [SITE.email, "lg-conseil@bonnifay.eu"],
+            telephone: [SITE.phone, "+33 6 07 83 18 18"],
             sameAs: [
               "https://www.linkedin.com/in/laurent-garnero-13016",
               "https://www.linkedin.com/in/glbonnifay",
