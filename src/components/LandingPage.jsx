@@ -1329,16 +1329,6 @@ export default function LandingPage() {
             </a>
           </div>
         </Card>
-
-        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-            <MessagesSquare className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
-              Parlez-nous de vous,<br />
-              on vous recontacte <span className="animate-pulse text-[#e2583f]">vite</span>
-            </span>
-          </PillButton>
-        </div>
       </Section>
 
       {/* --- Social Proof --- */}
@@ -1575,16 +1565,6 @@ export default function LandingPage() {
               )}
             </form>
           </Card>
-        </div>
-
-        <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-          <PillButton onClick={() => document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' })}>
-            <CalendarClock className="h-4 w-4 flex-shrink-0" />
-            <span className="text-justify leading-tight">
-              Réservez un appel<br />
-              découverte <span className="animate-pulse text-[#e2583f]">gratuit</span>
-            </span>
-          </PillButton>
         </div>
       </Section>
 
