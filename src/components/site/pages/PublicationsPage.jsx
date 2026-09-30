@@ -6,7 +6,7 @@ import { Section, PUBLICATIONS, DominoIcon } from "../shared.jsx";
 export default function PublicationsPage() {
   return (
     <PageShell>
-      <Section id="conseils" kicker="Publications" title="Laurent">
+      <Section id="conseils" kicker="Publications" title="Laurent partage son expertise">
         <div className="grid gap-6 md:grid-cols-3">
           {PUBLICATIONS.map((article, idx) => (
             <a
