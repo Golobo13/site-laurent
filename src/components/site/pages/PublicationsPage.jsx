@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import PageShell from "../PageShell.jsx";
-import { Section, PUBLICATIONS, DominoIcon } from "../shared.jsx";
+import { Section, PUBLICATIONS, DominoIcon, PublicationModal } from "../shared.jsx";
 
 export default function PublicationsPage() {
+  const [activePublication, setActivePublication] = useState(null);
+
   return (
     <PageShell>
       <Section id="conseils" kicker="Publications" title="Laurent partage son expertise">
         <div className="grid gap-6 md:grid-cols-3">
           {PUBLICATIONS.map((article, idx) => (
-            <a
+            <button
               key={idx}
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block"
+              type="button"
+              onClick={() => setActivePublication(article)}
+              className="group relative block text-left"
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative h-full backdrop-blur-xl bg-slate-900/60 border border-slate-700/60 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 group-hover:border-purple-500/40 transition-all duration-300">
@@ -38,11 +39,11 @@ export default function PublicationsPage() {
                   <p className="mt-2 text-sm text-slate-400 leading-relaxed">{article.excerpt}</p>
                 </div>
                 <div className="flex items-center gap-2 text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
-                  Lire sur LinkedIn
+                  Lire
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 duration-300" />
                 </div>
               </div>
-            </a>
+            </button>
           ))}
         </div>
         <div className="mt-8 flex items-center justify-center gap-3">
@@ -59,6 +60,7 @@ export default function PublicationsPage() {
           </a>
         </div>
       </Section>
+      <PublicationModal article={activePublication} onClose={() => setActivePublication(null)} />
     </PageShell>
   );
 }

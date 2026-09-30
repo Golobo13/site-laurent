@@ -41,6 +41,47 @@ export const PUBLICATIONS = [
     excerpt: "Le BFR expliqué avec une métaphore simple : pourquoi même avec de bonnes ventes, votre trésorerie peut tomber en panne.",
     url: "https://www.linkedin.com/pulse/le-bfr-expliqu%C3%A9-la-voiture-lessence-et-tr%C3%A9sorerie-laurent-garnero-rupqf/",
     tag: "Trésorerie & BFR",
+    byline: "Laurent GARNERO — Consultant en gestion, création et reprise d'entreprise",
+    date: "18 septembre 2025",
+    body: [
+      { type: "paragraph", text: "Imagine que ton entreprise est une voiture. Pas n'importe laquelle : une voiture qui doit parcourir un long trajet pour atteindre sa destination. Le trajet, c'est ton projet, ton développement, tes ventes à venir." },
+      { type: "paragraph", text: "Pour réussir ce trajet, il te faut de l'essence. Et dans ton entreprise, cette essence s'appelle… le BFR, ou Besoin en Fonds de Roulement." },
+      { type: "heading", text: "1️⃣ La voiture et le réservoir : ton entreprise et ton cash" },
+      { type: "paragraph", text: "Ton réservoir d'essence correspond à l'argent disponible sur ton compte : ta trésorerie." },
+      { type: "list", items: [
+        "Trop peu d'essence ? Tu risques de t'arrêter en plein milieu du trajet.",
+        "Trop d'essence ? Ce n'est pas un problème immédiat, mais cela signifie que tu as immobilisé de l'argent qui pourrait être investi ailleurs.",
+      ] },
+      { type: "paragraph", text: "Le BFR te permet de savoir combien d'essence tu dois avoir pour rouler sans stress." },
+      { type: "heading", text: "2️⃣ Combien d'essence mettre pour atteindre sa destination ?" },
+      { type: "paragraph", text: "Avant de partir, tu dois connaître trois choses :" },
+      { type: "list", ordered: true, items: [
+        "La distance totale à parcourir – combien de jours ou semaines tes clients mettent pour te payer ?",
+        "Ta consommation d'essence par kilomètre – combien d'argent tu dois avancer pour payer tes fournisseurs, ton stock, tes charges ?",
+        "Les stations-service sur la route – est-ce que tu as des entrées d'argent qui vont « remplir ton réservoir » avant qu'il ne soit vide ?",
+      ] },
+      { type: "paragraph", text: "Si tu ne fais pas ce calcul, tu risques de tomber en panne au milieu du trajet, même si tes ventes sont bonnes. Et c'est exactement ce qui arrive quand la trésorerie est tendue malgré un chiffre d'affaires en croissance." },
+      { type: "heading", text: "3️⃣ Les trois éléments du BFR" },
+      { type: "paragraph", text: "Pour prolonger notre métaphore, ton BFR est composé de trois « réservoirs secondaires » :" },
+      { type: "list", items: [
+        "Les stocks : c'est comme le poids de la voiture. Plus elle est chargée, plus elle consomme d'essence. Si tu achètes beaucoup de produits avant de les vendre, ton BFR augmente.",
+        "Les clients : ce sont les kilomètres à parcourir sans trouver de station-service. Les factures non réglées immobilisent ton argent et te font avancer avec un réservoir vide.",
+        "Les fournisseurs : ce sont les stations-service où tu dois payer pour continuer à rouler. Plus ils demandent un paiement rapide, plus tu dois avancer de l'argent rapidement.",
+      ] },
+      { type: "heading", text: "4️⃣ Comment gérer son BFR ?" },
+      { type: "paragraph", text: "Pour que ton trajet se passe bien, tu peux agir sur trois leviers :" },
+      { type: "list", items: [
+        "Réduire la distance entre les stations-service : facturer plus vite et relancer tes clients pour encaisser plus tôt.",
+        "Alléger la voiture : gérer tes stocks intelligemment pour ne pas immobiliser trop d'argent.",
+        "Négocier tes arrêts chez les fournisseurs : obtenir des délais de paiement plus longs, comme si les stations-service acceptaient de te laisser rouler avant de payer.",
+      ] },
+      { type: "heading", text: "5️⃣ La morale de l'histoire" },
+      { type: "paragraph", text: "Même avec une voiture puissante (un chiffre d'affaires élevé), si ton réservoir est mal rempli ou mal anticipé, tu risques de t'arrêter avant d'atteindre ton objectif." },
+      { type: "paragraph", text: "Le BFR, c'est exactement ça : il te permet de savoir combien d'argent tu dois avoir, quand et où, pour que ton entreprise avance sans à-coups et avec sérénité." },
+      { type: "quote", text: "💡 Astuce d'expert : un BFR bien géré transforme une entreprise « stressée » en entreprise « sereine ». Et c'est souvent cette sérénité qui permet de prendre de meilleures décisions, investir au bon moment et saisir des opportunités." },
+      { type: "heading", text: "✅ Conclusion" },
+      { type: "paragraph", text: "Le BFR n'est pas un outil réservé aux comptables ou aux banquiers. C'est ta boussole pour piloter ton entreprise. Comme un conducteur qui connaît son réservoir et ses stations, tu avances plus loin, plus vite et surtout… sans tomber en panne !" },
+    ],
   },
   {
     icon: "domino",
@@ -48,6 +89,24 @@ export const PUBLICATIONS = [
     excerpt: "Un simple retard peut déclencher une cascade : trésorerie tendue, relations dégradées, stress permanent.",
     url: "https://www.linkedin.com/posts/laurent-garnero-13016_gestion-pme-cashflow-activity-7376133292020019200-8faT",
     tag: "Gestion PME",
+    body: [
+      { type: "paragraph", text: "Un simple retard de paiement, ça peut paraître anodin." },
+      { type: "paragraph", text: "Mais dans une petite entreprise, c'est souvent l'effet domino :" },
+      { type: "list", items: [
+        "💸 Le client paie en retard,",
+        "➡️ La trésorerie se tend,",
+        "➡️ Le dirigeant repousse certains règlements,",
+        "➡️ La relation avec les fournisseurs se dégrade,",
+        "➡️ Et la spirale du stress commence…",
+      ] },
+      { type: "paragraph", text: "La bonne nouvelle, c'est qu'il existe des solutions pour casser ce cercle vicieux :" },
+      { type: "list", items: [
+        "✔️ Anticiper les flux avec un plan de trésorerie,",
+        "✔️ Mettre en place des acomptes,",
+        "✔️ Sécuriser ses délais de paiement dès le devis.",
+      ] },
+      { type: "quote", text: "👉 Et vous, avez-vous déjà vécu cet « effet domino » dans votre entreprise ?" },
+    ],
   },
   {
     emoji: "📊",
@@ -55,6 +114,13 @@ export const PUBLICATIONS = [
     excerpt: "Les indicateurs clés à surveiller pour anticiper les difficultés et décider au bon moment.",
     url: "https://www.linkedin.com/posts/laurent-garnero-13016_5-chiffres-qui-peuvent-sauver-votre-entreprise-activity-7368538257451675648-eHcx",
     tag: "Pilotage",
+    images: [
+      { src: "/images/publications/indicateurs-cover.jpg", alt: "5 Astuces : comment savoir rapidement si mon entreprise est sur la bonne voie ?" },
+      { src: "/images/publications/indicateurs-astuce-1.jpg", alt: "Astuce 1 — Votre trésorerie disponible" },
+      { src: "/images/publications/indicateurs-astuce-3.jpg", alt: "Astuce 3 — La marge brute" },
+      { src: "/images/publications/indicateurs-astuce-4.jpg", alt: "Astuce 4 — Niveau d'endettement" },
+      { src: "/images/publications/indicateurs-astuce-5.jpg", alt: "Astuce 5 — Carnet de commandes" },
+    ],
   },
 ];
 
@@ -668,6 +734,111 @@ export const DownloadModal = ({
               )}
             </form>
           )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const PublicationModal = ({ article, onClose }) => {
+  useEffect(() => {
+    if (!article) return;
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [article, onClose]);
+
+  if (!article) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] overflow-y-auto bg-slate-950/80 p-4 backdrop-blur-sm sm:p-6"
+      onClick={onClose}
+    >
+      <div className="relative mx-auto my-6 w-full max-w-2xl sm:my-10" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer"
+          className="absolute -top-4 -right-4 z-10 rounded-full border border-slate-600/60 bg-slate-900 p-2 text-slate-200 shadow-lg hover:bg-slate-800"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl">
+          <div className="border-b border-slate-700/60 p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-3">
+              {article.icon === "domino" ? (
+                <DominoIcon className="h-9 w-9" />
+              ) : (
+                <span className="text-3xl">{article.emoji}</span>
+              )}
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+                {article.tag}
+              </span>
+            </div>
+            <h2 className="mt-4 text-xl font-semibold leading-snug text-white sm:text-2xl">{article.title}</h2>
+            {(article.byline || article.date) && (
+              <p className="mt-2 text-sm text-slate-400">
+                {article.byline}
+                {article.byline && article.date ? " · " : ""}
+                {article.date}
+              </p>
+            )}
+          </div>
+
+          <div className="max-h-[65vh] overflow-y-auto p-6 sm:p-8">
+            {Array.isArray(article.body) && (
+              <div className="space-y-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+                {article.body.map((block, i) => {
+                  if (block.type === "heading") {
+                    return (
+                      <h3 key={i} className="pt-2 text-base font-semibold text-white sm:text-lg">
+                        {block.text}
+                      </h3>
+                    );
+                  }
+                  if (block.type === "quote") {
+                    return (
+                      <p
+                        key={i}
+                        className="rounded-xl border border-purple-500/30 bg-purple-500/10 p-4 text-purple-100"
+                      >
+                        {block.text}
+                      </p>
+                    );
+                  }
+                  if (block.type === "list") {
+                    const ListTag = block.ordered ? "ol" : "ul";
+                    return (
+                      <ListTag
+                        key={i}
+                        className={`space-y-2 pl-5 ${block.ordered ? "list-decimal" : "list-disc"}`}
+                      >
+                        {block.items.map((item, j) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ListTag>
+                    );
+                  }
+                  return <p key={i}>{block.text}</p>;
+                })}
+              </div>
+            )}
+
+            {Array.isArray(article.images) && (
+              <div className="space-y-4">
+                {article.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className="w-full rounded-xl border border-slate-700/60"
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
