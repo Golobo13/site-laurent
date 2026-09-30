@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import PourquoiPage from '../components/site/pages/PourquoiPage.jsx';
+
+const title = "Pourquoi un expert en gestion ? | LG Conseil Marseille";
+const description = "Un métier mal connu, une valeur très concrète : découvrez pourquoi faire appel à un expert en gestion d'entreprise à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/pourquoi-un-expert">
+  <PourquoiPage client:load />
+</SeoLayout>

@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import FaqPage from '../components/site/pages/FaqPage.jsx';
+
+const title = "Foire aux questions | LG Conseil Marseille";
+const description = "Toutes les réponses à vos questions sur l'accompagnement en gestion d'entreprise à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/faq">
+  <FaqPage client:load />
+</SeoLayout>

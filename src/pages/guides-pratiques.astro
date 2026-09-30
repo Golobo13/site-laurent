@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import GuidesPage from '../components/site/pages/GuidesPage.jsx';
+
+const title = "Guides pratiques gratuits à télécharger | LG Conseil";
+const description = "4 guides pratiques gratuits : création d'entreprise, rentabilité, difficultés, cession. Téléchargez-les par email.";
+---
+
+<SeoLayout title={title} description={description} path="/guides-pratiques">
+  <GuidesPage client:load />
+</SeoLayout>

@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import PublicationsPage from '../components/site/pages/PublicationsPage.jsx';
+
+const title = "Publications - Laurent Garnero | LG Conseil";
+const description = "Retrouvez les publications et articles de Laurent Garnero sur la gestion et le pilotage d'entreprise.";
+---
+
+<SeoLayout title={title} description={description} path="/publications">
+  <PublicationsPage client:load />
+</SeoLayout>

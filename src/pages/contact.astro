@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import ContactPage from '../components/site/pages/ContactPage.jsx';
+
+const title = "Parlez-nous de vous - Contact | LG Conseil";
+const description = "Parlez-nous de votre entreprise et de vos objectifs, nous vous recontactons rapidement.";
+---
+
+<SeoLayout title={title} description={description} path="/contact">
+  <ContactPage client:load />
+</SeoLayout>

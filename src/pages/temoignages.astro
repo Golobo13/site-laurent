@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import TemoignagesPage from '../components/site/pages/TemoignagesPage.jsx';
+
+const title = "Témoignages clients | LG Conseil Marseille";
+const description = "Ce que disent nos clients de notre accompagnement en gestion d'entreprise à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/temoignages">
+  <TemoignagesPage client:load />
+</SeoLayout>

@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import RendezVousPage from '../components/site/pages/RendezVousPage.jsx';
+
+const title = "Prenons rendez-vous - Appel découverte gratuit | LG Conseil";
+const description = "Réservez un appel découverte gratuit de 30 minutes avec un expert en gestion d'entreprise à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/rendez-vous">
+  <RendezVousPage client:load />
+</SeoLayout>

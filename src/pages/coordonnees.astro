@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import CoordonneesPage from '../components/site/pages/CoordonneesPage.jsx';
+
+const title = "Contact - Nos coordonnées | LG Conseil Marseille";
+const description = "Nos coordonnées : téléphone, email et LinkedIn pour contacter LG Conseil à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/coordonnees">
+  <CoordonneesPage client:load />
+</SeoLayout>

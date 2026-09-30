@@ -1,0 +1,11 @@
+---
+import SeoLayout from '../layouts/SeoLayout.astro';
+import MissionsPage from '../components/site/pages/MissionsPage.jsx';
+
+const title = "Nos missions : pilotage, création, cession | LG Conseil Marseille";
+const description = "Nos missions : pilotage d'entreprise, création et reprise, cession et transmission. Accompagnement d'experts en gestion à Marseille.";
+---
+
+<SeoLayout title={title} description={description} path="/missions">
+  <MissionsPage client:load />
+</SeoLayout>
