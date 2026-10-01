@@ -3,11 +3,12 @@ import { FileText, ArrowRight } from "lucide-react";
 import PageShell from "../PageShell.jsx";
 import { Section, RESOURCES, DownloadModal, RequiredFieldsModal } from "../shared.jsx";
 
-const DL_REQUIRED_FIELDS = ["firstName", "lastName", "email", "phone", "companyName"];
-// Pour le guide "Vous allez créer votre entreprise" : le prénom, le téléphone
-// et la raison sociale ne sont pas obligatoires (l'entreprise n'est pas encore créée).
+// Le prénom et la raison sociale ne sont obligatoires sur aucun des 4 guides.
+const DL_REQUIRED_FIELDS = ["lastName", "email", "phone"];
+// Pour le guide "Vous allez créer votre entreprise" : le téléphone n'est pas
+// non plus obligatoire (l'entreprise n'est pas encore créée).
 const PRE_CREATION_SLUG = "20-points-controle-creation";
-const PRE_CREATION_OPTIONAL_FIELDS = ["firstName", "companyName", "phone"];
+const PRE_CREATION_OPTIONAL_FIELDS = ["phone"];
 
 export default function GuidesPage() {
   const [downloadResource, setDownloadResource] = useState(null);
