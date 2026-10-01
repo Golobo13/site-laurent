@@ -564,6 +564,9 @@ export const DownloadModal = ({
   if (!resource) return null;
 
   const Icon = resource.icon;
+  // Pour le guide "Vous allez créer votre entreprise" : le prénom et la raison
+  // sociale ne sont pas obligatoires (l'entreprise n'est pas encore créée).
+  const isPreCreation = resource.slug === "20-points-controle-creation";
 
   return (
     <div
@@ -629,7 +632,7 @@ export const DownloadModal = ({
                 />
                 <Input
                   label="Prénom"
-                  required
+                  required={!isPreCreation}
                   blink={fieldErrors.firstName}
                   value={form.firstName}
                   onChange={(e) => {
@@ -688,7 +691,7 @@ export const DownloadModal = ({
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Raison sociale"
-                  required
+                  required={!isPreCreation}
                   blink={fieldErrors.companyName}
                   value={form.companyName}
                   onChange={(e) => {

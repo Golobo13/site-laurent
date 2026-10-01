@@ -4,6 +4,10 @@ import PageShell from "../PageShell.jsx";
 import { Section, RESOURCES, DownloadModal, RequiredFieldsModal } from "../shared.jsx";
 
 const DL_REQUIRED_FIELDS = ["firstName", "lastName", "email", "phone", "companyName"];
+// Pour le guide "Vous allez créer votre entreprise" : le prénom et la raison
+// sociale ne sont pas obligatoires (l'entreprise n'est pas encore créée).
+const PRE_CREATION_SLUG = "20-points-controle-creation";
+const PRE_CREATION_OPTIONAL_FIELDS = ["firstName", "companyName"];
 
 export default function GuidesPage() {
   const [downloadResource, setDownloadResource] = useState(null);
@@ -47,8 +51,13 @@ export default function GuidesPage() {
     e.preventDefault();
     if (!downloadResource) return;
 
+    const isPreCreation = downloadResource.slug === PRE_CREATION_SLUG;
+    const requiredFields = isPreCreation
+      ? DL_REQUIRED_FIELDS.filter((key) => !PRE_CREATION_OPTIONAL_FIELDS.includes(key))
+      : DL_REQUIRED_FIELDS;
+
     const missing = {};
-    DL_REQUIRED_FIELDS.forEach((key) => {
+    requiredFields.forEach((key) => {
       if (!String(dlForm[key] || "").trim()) missing[key] = true;
     });
 
