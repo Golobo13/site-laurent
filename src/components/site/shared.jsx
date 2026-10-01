@@ -564,10 +564,8 @@ export const DownloadModal = ({
   if (!resource) return null;
 
   const Icon = resource.icon;
-  // Le prénom et la raison sociale ne sont obligatoires sur aucun des 4 guides.
-  // Pour le guide "Vous allez créer votre entreprise" : le téléphone n'est pas
-  // non plus obligatoire (l'entreprise n'est pas encore créée).
-  const isPreCreation = resource.slug === "20-points-controle-creation";
+  // Seuls le nom et l'email sont obligatoires sur les 4 guides (prénom,
+  // téléphone et raison sociale sont facultatifs partout).
 
   return (
     <div
@@ -678,7 +676,6 @@ export const DownloadModal = ({
                   type="tel"
                   inputMode="numeric"
                   pattern="[0-9]*"
-                  required={!isPreCreation}
                   blink={fieldErrors.phone}
                   value={form.phone}
                   onChange={(e) => {

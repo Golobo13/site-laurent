@@ -3,12 +3,9 @@ import { FileText, ArrowRight } from "lucide-react";
 import PageShell from "../PageShell.jsx";
 import { Section, RESOURCES, DownloadModal, RequiredFieldsModal } from "../shared.jsx";
 
-// Le prénom et la raison sociale ne sont obligatoires sur aucun des 4 guides.
-const DL_REQUIRED_FIELDS = ["lastName", "email", "phone"];
-// Pour le guide "Vous allez créer votre entreprise" : le téléphone n'est pas
-// non plus obligatoire (l'entreprise n'est pas encore créée).
-const PRE_CREATION_SLUG = "20-points-controle-creation";
-const PRE_CREATION_OPTIONAL_FIELDS = ["phone"];
+// Seuls le nom et l'email sont obligatoires sur les 4 guides (prénom, téléphone
+// et raison sociale sont facultatifs partout).
+const DL_REQUIRED_FIELDS = ["lastName", "email"];
 
 export default function GuidesPage() {
   const [downloadResource, setDownloadResource] = useState(null);
@@ -52,13 +49,8 @@ export default function GuidesPage() {
     e.preventDefault();
     if (!downloadResource) return;
 
-    const isPreCreation = downloadResource.slug === PRE_CREATION_SLUG;
-    const requiredFields = isPreCreation
-      ? DL_REQUIRED_FIELDS.filter((key) => !PRE_CREATION_OPTIONAL_FIELDS.includes(key))
-      : DL_REQUIRED_FIELDS;
-
     const missing = {};
-    requiredFields.forEach((key) => {
+    DL_REQUIRED_FIELDS.forEach((key) => {
       if (!String(dlForm[key] || "").trim()) missing[key] = true;
     });
 
