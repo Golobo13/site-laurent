@@ -171,8 +171,8 @@ export default function HomePage() {
                 </button>
 
                 <p className="text-slate-300 leading-relaxed mb-4">
-                  10+ ans d'expérience en pilotage d'entreprise (création, croissance, redressement). Mon rôle : transformer
-                  des chiffres en décisions et des décisions en résultats.
+                  Plus de 20 ans d'expérience entrepreneuriale et en pilotage d'entreprise. Mon rôle : transformer vos
+                  chiffres en décisions et vous aider à transformer vos décisions en résultats.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
