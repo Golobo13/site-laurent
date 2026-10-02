@@ -17,7 +17,12 @@ export default function CoordonneesPage() {
                   {formatPhoneFR(SITE.phone)}
                 </a>
               </li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-purple-400" /> {SITE.email}</li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-purple-400" />
+                <a href={`mailto:${SITE.email}`} className="hover:text-purple-300 hover:underline">
+                  {SITE.email}
+                </a>
+              </li>
               <li className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-purple-400" />
                 <span dangerouslySetInnerHTML={{ __html: SITE.addressHtml }} />
@@ -41,7 +46,12 @@ export default function CoordonneesPage() {
                   {formatPhoneFR("+33 6 07 83 18 18")}
                 </a>
               </li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-purple-400" /> lg-conseil@bonnifay.eu</li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-purple-400" />
+                <a href="mailto:lg-conseil@bonnifay.eu" className="hover:text-purple-300 hover:underline">
+                  lg-conseil@bonnifay.eu
+                </a>
+              </li>
               <li className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-purple-400" />
                 <span>Marseille</span>
