@@ -17,7 +17,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import PageShell from "../PageShell.jsx";
-import { PillButton, MagicCard, LogoLightbox } from "../shared.jsx";
+import { PillButton, MagicCard, LogoLightbox, SITE, formatPhoneFR, phoneHref } from "../shared.jsx";
 
 const PAGES = [
   {
@@ -170,6 +170,14 @@ export default function HomePage() {
                   </div>
                 </button>
 
+                <a
+                  href={phoneHref(SITE.phone)}
+                  className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-purple-300 hover:text-purple-200 hover:underline"
+                >
+                  <Phone className="h-4 w-4" />
+                  {formatPhoneFR(SITE.phone)}
+                </a>
+
                 <p className="text-slate-300 leading-relaxed mb-4">
                   Plus de 20 ans d'expérience entrepreneuriale et en pilotage d'entreprises. Mon rôle : transformer vos
                   chiffres en décisions et vous aider à transformer vos décisions en résultats.
@@ -261,6 +269,14 @@ export default function HomePage() {
                     <p className="text-sm text-purple-300">Copilote des chefs d'entreprise</p>
                   </div>
                 </button>
+
+                <a
+                  href={phoneHref("+33 6 07 83 18 18")}
+                  className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-purple-300 hover:text-purple-200 hover:underline"
+                >
+                  <Phone className="h-4 w-4" />
+                  {formatPhoneFR("+33 6 07 83 18 18")}
+                </a>
 
                 <p className="text-slate-300 leading-relaxed mb-4">
                   40 ans d'expérience entrepreneuriale. Mon rôle : vous accompagner sur la trésorerie, la rentabilité,

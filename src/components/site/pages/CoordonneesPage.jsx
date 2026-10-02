@@ -1,7 +1,7 @@
 import React from "react";
 import { Phone, Mail, Building2 } from "lucide-react";
 import PageShell from "../PageShell.jsx";
-import { Section, Card, SITE } from "../shared.jsx";
+import { Section, Card, SITE, formatPhoneFR, phoneHref } from "../shared.jsx";
 
 export default function CoordonneesPage() {
   return (
@@ -11,7 +11,12 @@ export default function CoordonneesPage() {
           <Card>
             <h3 className="text-lg font-semibold text-white">Laurent Garnero</h3>
             <ul className="mt-3 space-y-2 text-slate-300">
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-purple-400" /> {SITE.phone}</li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-purple-400" />
+                <a href={phoneHref(SITE.phone)} className="hover:text-purple-300 hover:underline">
+                  {formatPhoneFR(SITE.phone)}
+                </a>
+              </li>
               <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-purple-400" /> {SITE.email}</li>
               <li className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-purple-400" />
@@ -30,7 +35,12 @@ export default function CoordonneesPage() {
           <Card>
             <h3 className="text-lg font-semibold text-white">Georges-Louis Bonnifay</h3>
             <ul className="mt-3 space-y-2 text-slate-300">
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-purple-400" /> +33 6 07 83 18 18</li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-purple-400" />
+                <a href={phoneHref("+33 6 07 83 18 18")} className="hover:text-purple-300 hover:underline">
+                  {formatPhoneFR("+33 6 07 83 18 18")}
+                </a>
+              </li>
               <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-purple-400" /> lg-conseil@bonnifay.eu</li>
               <li className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-purple-400" />

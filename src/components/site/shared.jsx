@@ -23,6 +23,18 @@ export const SITE = {
   addressHtml: "Marseille",
 };
 
+// Formate un numéro international ("+33 6 22 45 92 38") en numéro français
+// local lisible ("06 22 45 92 38"), pour l'affichage.
+export const formatPhoneFR = (intlPhone) => {
+  const digits = intlPhone.replace(/\D/g, "");
+  const national = digits.startsWith("33") ? `0${digits.slice(2)}` : digits;
+  return national.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
+};
+
+// Lien "tel:" (format international, sans espaces) à partir du même numéro,
+// pour que le numéro soit cliquable sur mobile.
+export const phoneHref = (intlPhone) => `tel:${intlPhone.replace(/\s+/g, "")}`;
+
 // Navigation principale, commune à toutes les pages
 export const NAV_ITEMS = [
   { href: "/missions", label: "Missions" },
