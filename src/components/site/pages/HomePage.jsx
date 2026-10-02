@@ -171,7 +171,7 @@ export default function HomePage() {
                 </button>
 
                 <p className="text-slate-300 leading-relaxed mb-4">
-                  Plus de 20 ans d'expérience entrepreneuriale et en pilotage d'entreprise. Mon rôle : transformer vos
+                  Plus de 20 ans d'expérience entrepreneuriale et en pilotage d'entreprises. Mon rôle : transformer vos
                   chiffres en décisions et vous aider à transformer vos décisions en résultats.
                 </p>
 
