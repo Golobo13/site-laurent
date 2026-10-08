@@ -48,8 +48,8 @@ export default function CoordonneesPage() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-purple-400" />
-                <a href="mailto:lg-conseil@bonnifay.eu" className="hover:text-purple-300 hover:underline">
-                  lg-conseil@bonnifay.eu
+                <a href="mailto:georges@lg-conseil.eu" className="hover:text-purple-300 hover:underline">
+                  georges@lg-conseil.eu
                 </a>
               </li>
               <li className="flex items-center gap-2">

@@ -372,7 +372,7 @@ export default function HomePage() {
               addressCountry: "FR",
             },
             url: "https://lg-conseil.eu",
-            email: ["l.garnero@expertgcl.fr", "lg-conseil@bonnifay.eu"],
+            email: ["laurent@lg-conseil.eu", "georges@lg-conseil.eu"],
             telephone: ["+33 6 22 45 92 38", "+33 6 07 83 18 18"],
             sameAs: [
               "https://www.linkedin.com/in/laurent-garnero-13016",

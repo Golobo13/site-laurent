@@ -19,7 +19,7 @@ export const SITE = {
   city: "Marseille",
   calendlyUrl: "https://app.lemcal.com/@lg-conseil",
   phone: "+33 6 22 45 92 38",
-  email: "l.garnero@expertgcl.fr",
+  email: "laurent@lg-conseil.eu",
   addressHtml: "Marseille",
 };
 
